@@ -179,7 +179,7 @@
     if(pos < [self.eventMessages count])
     {
         [self.eventMessagelabel setText:self.eventMessages[pos]];
-        [self.eventMessagelabel setTextColor:[UIColor grayColor]];
+        [self.eventMessagelabel setAlpha:0.5];
     }
 }
 
