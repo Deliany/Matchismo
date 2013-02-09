@@ -7,12 +7,14 @@
 //
 
 #import "CardGame.h"
+#import "PlayingCardDeck.h"
+#import "PlayingCard.h"
 
 @interface CardGame ()
 
 @property (strong, nonatomic) NSMutableArray* cards;
 @property (readwrite, nonatomic) int score;
-@property (readwrite, strong, nonatomic) NSString *lastEventMessage;
+@property (readwrite, strong, nonatomic) NSAttributedString *lastEventMessage;
 
 @end
 
@@ -20,13 +22,13 @@
 
 -(id)init
 {
-    Deck *deck = [[PlayingDeck  alloc] init];
+    Deck *deck = [[PlayingCardDeck  alloc] init];
     return [self initWithNumberOfCards:deck.numberOfAvailableCards
                           fromCardDeck:deck
-                           andGameType:0];
+                           andNumberOfCardsToMatch:2];
 }
 
-- (id) initWithNumberOfCards:(NSUInteger)numOfCards fromCardDeck:(Deck *)deck andGameType:(NSUInteger)gameType
+- (id) initWithNumberOfCards:(NSUInteger)numOfCards fromCardDeck:(Deck *)deck andNumberOfCardsToMatch:(NSUInteger)gameType
 {
     if(self = [super init])
     {
@@ -36,15 +38,15 @@
             return nil;
         }
         
-        self.lastEventMessage = @"";
-        self.cards = [NSMutableArray arrayWithCapacity:numOfCards];
+        _lastEventMessage = [[NSAttributedString alloc] initWithString:@""];
+        _cards = [NSMutableArray arrayWithCapacity:numOfCards];
         
-        self.gameType = gameType;
+        _numberOfCardsToMatch = gameType;
         
         for (int i = 0; i < numOfCards; ++i)
         {
             Card *drawnCard = [deck drawRandomCard];
-            [self.cards addObject:drawnCard];
+            [_cards addObject:drawnCard];
         }
     }
     
@@ -52,90 +54,101 @@
 }
 
 #define NOT_MATCH_PENALTY 2
-#define MATCH_MULTIPLIER 4
 #define FLIP_PENALTY 1
 
 - (void) flipCardAtIndex:(NSUInteger) index
 {
     Card *currentCard = [self cardAtIndex:index];
         
-    if (currentCard.isPlayable)
+    if (currentCard && currentCard.isPlayable)
     {
-        if (!currentCard.isFaceUp)
+        if (currentCard.isFaceUp)
         {
-            self.lastEventMessage = [NSString stringWithFormat:@"Flipped up %@",currentCard];
-            
-            NSPredicate *condition = [NSPredicate predicateWithFormat:@"isFaceUp == YES AND isPlayable == YES"];
-            NSArray *matchedCards = [self.cards filteredArrayUsingPredicate:condition];
-            
-            switch ([matchedCards count])
-            {
-                case 1:
-                {
-                    Card *matchedCard = [matchedCards lastObject];
-                    
-                    int matchScore = [currentCard match:matchedCards];
-                    if(matchScore == 0)
-                    {
-                        self.score -= NOT_MATCH_PENALTY;
-                        
-                        // put one card face down
-                        matchedCard.faceUp = NO;
-                        self.lastEventMessage = [NSString stringWithFormat:@"%@ and %@ don't match! %d point penalty!",currentCard, matchedCard, NOT_MATCH_PENALTY];
-                    }
-                    else
-                    {
-                        self.score += matchScore;
-                        self.lastEventMessage = [NSString stringWithFormat:@"Matched %@ and %@ for %d points", currentCard, matchedCard, matchScore];
-                        
-                        // game type of 2-cards only, so make these cards unplayable
-                        if (self.gameType == 0)
-                        {
-                            matchedCard.playable = currentCard.playable = NO;
-                        }
-                    }
-                }
-                    break;
-                    
-                case 2:
-                {
-                    int matchScore = [currentCard match:matchedCards];
-                    if(matchScore == 0)
-                    {
-                        self.score -= NOT_MATCH_PENALTY*2;
-                        
-                        // put two cards face down
-                        [matchedCards enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                            [obj setFaceUp:NO];
-                        }];
-                        self.lastEventMessage = [NSString stringWithFormat:@"Some cards don't match! %d point penalty!", NOT_MATCH_PENALTY*2];
-                    }
-                    else
-                    {
-                        self.score += matchScore * MATCH_MULTIPLIER;
-                        
-                        currentCard.playable = NO;
-                        [matchedCards enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                            [obj setPlayable:NO];
-                        }];
-                        self.lastEventMessage = [NSString stringWithFormat:@"Matched 3 cards for %d points", matchScore * MATCH_MULTIPLIER];
-                    }
-                    
-                }
-                    break;
-                    
-                default:
-                    break;
-            }
-            self.score -= FLIP_PENALTY;
+            self.lastEventMessage = [[NSAttributedString alloc] initWithString:@""];
         }
+        else
+        {
+            NSMutableAttributedString *msg = [[NSMutableAttributedString alloc] initWithString:@"Flipped up "];
+            [msg appendAttributedString:[currentCard attributedDescription]];
+            self.lastEventMessage = [[NSAttributedString alloc] initWithAttributedString:msg];
+        }
+        self.score -= FLIP_PENALTY;
         currentCard.faceUp = !currentCard.faceUp;
+        
+        if([self countOfPlayingCardsFacingUp] == self.numberOfCardsToMatch)
+        {
+            [self matchCardsFacingUp];
+        }
+    }
+}
+
+- (void)matchCardsFacingUp
+{
+    NSMutableArray* cardsToMatch = [[NSMutableArray alloc] init];
+    NSMutableAttributedString *cardsContents = [[NSMutableAttributedString alloc] initWithString:@""];
+    
+    for (Card* card in self.cards)
+    {
+        if (card.isFaceUp && card.isPlayable)
+        {
+            [cardsToMatch addObject:card];
+            [cardsContents appendAttributedString:[card attributedDescription]];
+            [cardsContents appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
+        }
+    }
+    [cardsContents appendAttributedString:[[NSAttributedString alloc] initWithString:@"\b\b"]];
+    
+    Card* card = [cardsToMatch lastObject];
+    [cardsToMatch removeObject:card];
+    
+    
+    int matchScore = [card match:cardsToMatch];
+    if (matchScore)
+    {
+        for (Card* card in cardsToMatch)
+        {
+            card.playable = NO;
+        }
+        card.playable = NO;
+        self.score += matchScore;
+        
+        NSMutableAttributedString *msg = [[NSMutableAttributedString alloc] initWithAttributedString:cardsContents];
+        [msg appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" match for %d points!", matchScore]]];
+        
+        self.lastEventMessage = [[NSAttributedString alloc] initWithAttributedString:msg];
+    }
+    else
+    {
+        for (Card* card in cardsToMatch)
+        {
+            card.faceUp = NO;
+        }
+        card.faceUp = NO;
+        self.score -= NOT_MATCH_PENALTY;
+        
+        NSMutableAttributedString *msg = [[NSMutableAttributedString alloc] initWithAttributedString:cardsContents];
+        [msg appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" don't match! %d points penalty", NOT_MATCH_PENALTY]]];
+        self.lastEventMessage = [[NSAttributedString alloc] initWithAttributedString:msg];
     }
 }
 
 - (Card*) cardAtIndex:(NSUInteger) index
 {
     return index < [self.cards count] ? self.cards[index] : nil;
+}
+
+- (NSUInteger)countOfPlayingCardsFacingUp
+{
+    int count = 0;
+    for (Card *card in self.cards)
+    {
+        if (card.isPlayable && card.isFaceUp)
+        {
+            count++;
+        }
+    }
+    
+    return count;
 }
 
 @end

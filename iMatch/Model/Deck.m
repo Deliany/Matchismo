@@ -7,6 +7,7 @@
 //
 
 #import "Deck.h"
+#import "Card.h"
 
 @interface Deck ()
 
@@ -23,7 +24,7 @@
 {
     if(self = [super init])
     {
-        self.cards = [NSMutableArray array];
+        _cards = [NSMutableArray array];
     }
     
     return self;

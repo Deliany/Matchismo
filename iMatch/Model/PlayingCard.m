@@ -19,15 +19,15 @@
 {
     if (self = [super init])
     {
-        self.suit = suit;
-        self.rank = rank;
+        _suit = suit;
+        _rank = rank;
     }
     return self;
 }
 
 -(void)setRank:(NSUInteger)rank
 {
-    if(rank < [[PlayingCard ranks] count])
+    if(rank <= [[self class] maxRank])
     {
         _rank = rank;
     }
@@ -35,31 +35,35 @@
 
 -(void)setSuit:(NSString *)suit
 {
-    if ([[PlayingCard suits] containsObject:suit]) {
+    if ([[[self class] suits] containsObject:suit]) {
         _suit = suit;
     }
 }
 
 -(NSString *)description
 {
-    NSString *stringRank = [PlayingCard ranks][self.rank];
+    NSString *stringRank = [[self class] ranks][self.rank];
     return [NSString stringWithFormat:@"%@%@", stringRank, self.suit];
 }
 
-// otherCards array must contain PlayingCard objects
 -(int)match:(NSArray *)otherCards
 {
     int score = 0;
-    for (PlayingCard *card in otherCards)
+    for (id obj in otherCards)
     {
-        if([card.suit isEqualToString:self.suit])
+        // introspection
+        if ([obj isKindOfClass:[PlayingCard class]])
         {
-            score += 4;
-        }
-        else if (card.rank == self.rank)
-        {
-            // rank = 1 for "2", rank = 2 for "3" and so on
-            score += (self.rank + 1);
+            PlayingCard *card = (PlayingCard*)obj;
+            if([card.suit isEqualToString:self.suit])
+            {
+                score += 4;
+            }
+            else if (card.rank == self.rank)
+            {
+                // rank = 1 for "2", rank = 2 for "3" and so on
+                score += (self.rank + 1);
+            }
         }
     }
     
@@ -75,11 +79,16 @@
     return ranks;
 }
 
++ (NSUInteger) maxRank
+{
+    return [[[self class] ranks] count] - 1;
+}
+
 + (NSArray *) suits
 {
     static NSArray *suits = nil;
     if(!suits) {
-        suits = @[@"?",@"♠",@"♣",@"♥",@"♦"];
+        suits = @[@"♠",@"♣",@"♥",@"♦"];
     }
     return suits;
 }

@@ -25,13 +25,24 @@
 - (int)match:(NSArray *)otherCards
 {
     int score = 0;
-    for (Card *card in otherCards) {
-        if ([card.description isEqualToString:self.description])
+    for (id obj in otherCards)
+    {
+        // instrospection
+        if([obj isKindOfClass:[Card class]])
         {
-            score += 1;
+            Card *card = (Card*)obj;
+            if ([[card description] isEqualToString:[self description]])
+            {
+                score += 1;
+            }
         }
     }
     return score;
+}
+
+- (NSAttributedString *)attributedDescription
+{
+    return [[NSAttributedString alloc] initWithString:[self description]];
 }
 
 @end

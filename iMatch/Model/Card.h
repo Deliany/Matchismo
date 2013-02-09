@@ -14,5 +14,6 @@
 @property (nonatomic, getter = isPlayable) BOOL playable;
 
 - (int) match:(NSArray *)otherCards;
+- (NSAttributedString *) attributedDescription;
 
 @end

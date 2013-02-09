@@ -6,30 +6,37 @@
 //  Copyright (c) 2013 Clear Sky. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "CardGameViewController.h"
 #import "CardGame.h"
+#import "PlayingCardDeck.h"
+#import "PlayingCard.h"
 
-@interface ViewController ()
+@interface CardGameViewController ()
 
 // UI outlets
-@property (weak, nonatomic) IBOutlet UILabel *labelFlips;
+@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegmentControl;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *eventMessagelabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventMessageLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameTypeSegmentControl;
 @property (weak, nonatomic) IBOutlet UISlider *eventMessagesSlider;
 
+// other properties
 @property (strong, nonatomic) NSMutableArray *playingCardButtons;
 @property (strong, nonatomic) NSMutableArray *eventMessages;
 @property (nonatomic) NSUInteger flipsCount;
 @property (nonatomic) NSUInteger difficulty; // 0 - easy, 1 - medium
-@property (nonatomic) NSUInteger gameType; // 0 - 2-card game, 1 - 3-card game
+@property (nonatomic) NSUInteger numberOfCardsToMatch;
 
 @property (strong, nonatomic) CardGame *game;
 
 @end
 
-@implementation ViewController
+
+
+
+
+@implementation CardGameViewController
 
 -(NSMutableArray *)eventMessages
 {
@@ -42,7 +49,7 @@
 - (void)setFlipsCount:(NSUInteger)flipsCount
 {
     _flipsCount = flipsCount;
-    self.labelFlips.text = [NSString stringWithFormat:@"Flips: %u", flipsCount];
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %u", flipsCount];
 }
 
 - (NSMutableArray *)playingCardButtons
@@ -56,10 +63,10 @@
 }
 
 
-- (void) setGameType:(NSUInteger)gameType
+- (void) setNumberOfCardsToMatch:(NSUInteger)numberOfCardsToMatch
 {
-    _gameType = gameType;
-    self.game.gameType = _gameType;
+    _numberOfCardsToMatch = numberOfCardsToMatch;
+    self.game.numberOfCardsToMatch = _numberOfCardsToMatch;
 }
 
 - (void)setDifficulty:(NSUInteger)difficulty
@@ -102,9 +109,9 @@
     }
     
     // init standart 52-cards deck
-    Deck* deck = [[PlayingDeck alloc] init];
+    Deck* deck = [[PlayingCardDeck alloc] init];
     // create game with number of cards equals to number of stored buttons
-    self.game = [[CardGame alloc] initWithNumberOfCards:[self.playingCardButtons count] fromCardDeck: deck andGameType:self.gameType];
+    self.game = [[CardGame alloc] initWithNumberOfCards:[self.playingCardButtons count] fromCardDeck: deck andNumberOfCardsToMatch:self.numberOfCardsToMatch];
     
     [self updateUI];
 }
@@ -116,12 +123,14 @@
     self.eventMessagesSlider.maximumValue += 1;
     [self.eventMessagesSlider setValue:self.eventMessagesSlider.maximumValue animated:NO];
     
-    [self.eventMessagelabel setText:self.game.lastEventMessage];
-    [self.eventMessagelabel setTextColor:[UIColor blackColor]];
-    for (UIButton *button in self.playingCardButtons) {
+    [self.eventMessageLabel setAttributedText:self.game.lastEventMessage];
+    [self.eventMessageLabel setAlpha:1];
+    
+    for (UIButton *button in self.playingCardButtons)
+    {
         Card *card = [self.game cardAtIndex:[self.playingCardButtons indexOfObject:button]];
-        [button setTitle:card.description forState:UIControlStateSelected];
-        [button setTitle:card.description forState:UIControlStateSelected | UIControlStateDisabled];
+        [button setTitle:[card description] forState:UIControlStateSelected];
+        [button setTitle:[card description] forState:UIControlStateSelected | UIControlStateDisabled];
         
         if(card.isFaceUp)
         {
@@ -161,7 +170,7 @@
 
 - (IBAction)gameTypeClick
 {
-    self.gameType = self.gameTypeSegmentControl.selectedSegmentIndex;
+    self.numberOfCardsToMatch = self.gameTypeSegmentControl.selectedSegmentIndex + 2;
 }
 
 - (IBAction)difficultyChangeClick
@@ -178,8 +187,8 @@
     int pos = (int)self.eventMessagesSlider.value;
     if(pos < [self.eventMessages count])
     {
-        [self.eventMessagelabel setText:self.eventMessages[pos]];
-        [self.eventMessagelabel setAlpha:0.5];
+        [self.eventMessageLabel setAttributedText:self.eventMessages[pos]];
+        [self.eventMessageLabel setAlpha:0.5];
     }
 }
 
@@ -208,8 +217,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor clearColor];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-card-game.jpg"]]];
     
+    self.numberOfCardsToMatch = 2;
     [self createButtonsWithRows:4 andCols:4];
 }
 

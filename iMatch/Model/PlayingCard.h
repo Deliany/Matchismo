@@ -15,6 +15,7 @@
 
 +(NSArray *) suits;
 +(NSArray *) ranks;
++(NSUInteger) maxRank;
 
 - (id)initWithSuit:(NSString *)suit andRank:(NSUInteger)rank;
 
