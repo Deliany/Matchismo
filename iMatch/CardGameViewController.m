@@ -15,17 +15,15 @@
 
 // UI outlets
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegmentControl;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventMessageLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameTypeSegmentControl;
 @property (weak, nonatomic) IBOutlet UISlider *eventMessagesSlider;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *playingCardButtons;
 
 // other properties
-@property (strong, nonatomic) NSMutableArray *playingCardButtons;
 @property (strong, nonatomic) NSMutableArray *eventMessages;
 @property (nonatomic) NSUInteger flipsCount;
-@property (nonatomic) NSUInteger difficulty; // 0 - easy, 1 - medium
 @property (nonatomic) NSUInteger numberOfCardsToMatch;
 
 @property (strong, nonatomic) CardGame *game;
@@ -52,16 +50,6 @@
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %u", flipsCount];
 }
 
-- (NSMutableArray *)playingCardButtons
-{
-    if(!_playingCardButtons)
-    {
-        _playingCardButtons = [[NSMutableArray alloc] init];
-    }
-    
-    return _playingCardButtons;
-}
-
 
 - (void) setNumberOfCardsToMatch:(NSUInteger)numberOfCardsToMatch
 {
@@ -69,44 +57,8 @@
     self.game.numberOfCardsToMatch = _numberOfCardsToMatch;
 }
 
-- (void)setDifficulty:(NSUInteger)difficulty
+- (void)initDeckAndGame
 {
-    _difficulty = difficulty;
-    // easy difficulty
-    if (self.difficulty == 0)
-    {
-        [self createButtonsWithRows:4 andCols:4];
-    }
-    else if (self.difficulty == 1) // medium difficulty
-    {
-        [self createButtonsWithRows:5 andCols:5];
-    }
-}
-
-- (void)createButtonsWithRows:(NSUInteger)rows andCols:(NSUInteger)cols
-{
-    // remove buttons from view
-    for (UIButton *button in self.playingCardButtons)
-    {
-        [button removeFromSuperview];
-    }
-    
-    // and clear array
-    [self.playingCardButtons removeAllObjects];
-    
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            // X+100 Y+120 Z K
-            button.frame = CGRectMake(150 + 50*(5-cols) + 100*j, 120 + 120*i, 70, 100);
-            [button setBackgroundImage:[UIImage imageNamed:@"cardback.jpg"] forState:UIControlStateNormal];
-            [button.titleLabel setFont:[UIFont boldSystemFontOfSize:30]];
-            [button addTarget:self action:@selector(flipCardClick:) forControlEvents:UIControlEventTouchUpInside];
-            [self.playingCardButtons addObject:button];
-            // add to view to make it visible
-            [self.view addSubview:button];
-        }
-    }
     
     // init standart 52-cards deck
     Deck* deck = [[PlayingCardDeck alloc] init];
@@ -129,6 +81,7 @@
     for (UIButton *button in self.playingCardButtons)
     {
         Card *card = [self.game cardAtIndex:[self.playingCardButtons indexOfObject:button]];
+        [button setTitle:@"" forState:UIControlStateNormal];
         [button setTitle:[card description] forState:UIControlStateSelected];
         [button setTitle:[card description] forState:UIControlStateSelected | UIControlStateDisabled];
         
@@ -152,18 +105,16 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
 	// the user clicked one of the OK/Cancel buttons
 	if ([title isEqualToString:@"OK"])
-	{
-        self.difficulty = [self.difficultySegmentControl selectedSegmentIndex];        
-        
+	{      
         self.flipsCount = 0;
         [self.eventMessages removeAllObjects];
         self.eventMessagesSlider.maximumValue = 0;
         self.gameTypeSegmentControl.enabled = true;
+        [self initDeckAndGame];
 	}
 	else if ([title isEqualToString:@"Cancel"])
 	{        
-        // switch to previous difficulty
-        [self.difficultySegmentControl setSelectedSegmentIndex:self.difficulty];
+        // do nothing
         
 	}
 }
@@ -171,11 +122,6 @@
 - (IBAction)gameTypeClick
 {
     self.numberOfCardsToMatch = self.gameTypeSegmentControl.selectedSegmentIndex + 2;
-}
-
-- (IBAction)difficultyChangeClick
-{
-    [self restartGame];
 }
 
 - (IBAction)dealClick
@@ -194,8 +140,7 @@
 
 - (void)restartGame
 {
-    NSArray *difficulties = @[@"easy", @"medium"];
-    NSString *message = [NSString stringWithFormat:@"Are you sure want to start a new game on %@ difficulty?", difficulties[self.difficultySegmentControl.selectedSegmentIndex]];
+    NSString *message = [NSString stringWithFormat:@"Are you sure want to start a new game ?"];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New game"
                                                     message:message
@@ -220,7 +165,7 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-card-game.jpg"]]];
     
     self.numberOfCardsToMatch = 2;
-    [self createButtonsWithRows:4 andCols:4];
+    [self initDeckAndGame];
 }
 
 - (void)didReceiveMemoryWarning
