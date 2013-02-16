@@ -28,9 +28,9 @@
     return self;
 }
 
-- (int)match:(NSArray *)otherCards
+- (NSInteger)match:(NSArray *)otherCards
 {
-    int score = 0;
+    NSInteger score = 0;
     
     // match exactly with two other cards
     if([otherCards count] == 2)
@@ -56,7 +56,7 @@
         
         for (id item in bag)
         {
-            int itemCount = [bag countForObject:item];
+            NSUInteger itemCount = [bag countForObject:item];
             
             if (itemCount == 1)
             {

@@ -13,7 +13,7 @@
 
 @interface CardGame : NSObject
 
-@property (readonly, nonatomic) int score;
+@property (readonly, nonatomic) NSInteger score;
 @property (nonatomic) NSUInteger numberOfCardsToMatch;
 @property (readonly, strong, nonatomic) NSAttributedString *lastEventMessage;
 

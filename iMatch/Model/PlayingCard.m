@@ -46,9 +46,9 @@
     return [NSString stringWithFormat:@"%@%@", stringRank, self.suit];
 }
 
--(int)match:(NSArray *)otherCards
+-(NSInteger)match:(NSArray *)otherCards
 {
-    int score = 0;
+    NSInteger score = 0;
     for (id obj in otherCards)
     {
         // introspection

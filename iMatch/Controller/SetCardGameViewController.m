@@ -10,6 +10,7 @@
 #import "CardGame.h"
 #import "SetDeck.h"
 #import "SetCard.h"
+#import "GameResult.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface SetCardGameViewController ()
@@ -26,6 +27,8 @@
 @property (nonatomic) NSUInteger flipsCount;
 
 @property (strong, nonatomic) CardGame *game;
+@property (strong, nonatomic) Deck *deck;
+@property (strong, nonatomic) GameResult *gameResult;
 
 @end
 
@@ -34,6 +37,32 @@
 
 
 @implementation SetCardGameViewController
+
+- (Deck *)deck
+{
+    if (!_deck) {
+        _deck = [[SetDeck alloc] init];
+    }
+    return _deck;
+}
+
+#define CARD_TO_MATCH 3
+
+- (CardGame *)game
+{
+    if (!_game) {
+        _game = [[CardGame alloc] initWithNumberOfCards:[self.playingSetButtons count] fromCardDeck:self.deck andNumberOfCardsToMatch:CARD_TO_MATCH];
+    }
+    return _game;
+}
+
+- (GameResult *)gameResult
+{
+    if (!_gameResult) {
+        _gameResult = [[GameResult alloc] initWithGameName:[self gameName]];
+    }
+    return _gameResult;
+}
 
 -(NSMutableArray *)eventMessages
 {
@@ -52,17 +81,19 @@
 - (void)updateUI
 {
     [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.game.score]];
+    self.gameResult.score = self.game.score;
+    
     [self.eventMessages addObject:self.game.lastEventMessage];
-
-    self.eventMessagesSlider.maximumValue += 1;
-    [self.eventMessagesSlider setValue:self.eventMessagesSlider.maximumValue animated:NO];
-
+    
+    self.eventMessagesSlider.maximumValue = [self.eventMessages count];
+    self.eventMessagesSlider.value = self.eventMessagesSlider.maximumValue;
+    
     [self.eventMessageLabel setAttributedText:self.game.lastEventMessage];
     [self.eventMessageLabel setAlpha:1];
     
     for (UIButton *button in self.playingSetButtons)
     {
-        SetCard *card = (SetCard*)[self.game cardAtIndex:[self.playingSetButtons indexOfObject:button]];
+        Card *card = [self.game cardAtIndex:[self.playingSetButtons indexOfObject:button]];
         [button setAttributedTitle:[card attributedDescription] forState:UIControlStateNormal];
         [button setAttributedTitle:[card attributedDescription] forState:UIControlStateSelected];
         [button setAttributedTitle:[card attributedDescription] forState:UIControlStateSelected | UIControlStateDisabled];
@@ -75,20 +106,29 @@
 
 - (IBAction)selectSetCard:(UIButton *)sender
 {
+    self.flipsCount++;
     [self.game flipCardAtIndex:[self.playingSetButtons indexOfObject:sender]];
     [self updateUI];
-    self.flipsCount++;
 }
 
+- (IBAction)eventMessagesHistorySlide
+{
+    NSUInteger pos = (int)self.eventMessagesSlider.value;
+    if(pos < [self.eventMessages count])
+    {
+        [self.eventMessageLabel setText:self.eventMessages[pos]];
+        [self.eventMessageLabel setAlpha:0.5];
+    }
+}
 
 - (IBAction)dealClick
 {
-    [self restartGame];
+    [self showAlertMessage];
 }
 
-- (void)restartGame
+- (void) showAlertMessage
 {
-    NSString *message = @"Are you sure want to start a new game";
+    NSString *message = [NSString stringWithFormat:@"Are you sure want to start a new game?"];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New game"
                                                     message:message
@@ -101,43 +141,34 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-	// the user clicked one of the OK/Cancel buttons
 	if ([title isEqualToString:@"OK"])
 	{
-        [self startNewGame];
-        
+        [self restartGame];
 	}
 	else if ([title isEqualToString:@"Cancel"])
 	{
         // do nothing
+        
 	}
 }
 
-- (void)startNewGame
+- (void)restartGame
 {
-    // init standart 81-cards deck
-    Deck* deck = [[SetDeck alloc] init];
-    
-    // create game with number of cards equals to number of stored buttons
-    self.game = [[CardGame alloc] initWithNumberOfCards:[self.playingSetButtons count] fromCardDeck: deck andNumberOfCardsToMatch:3];
+    self.deck = nil;
+    self.game = nil;
+    self.gameResult = nil;
     
     self.flipsCount = 0;
-    [self.eventMessages removeAllObjects];
     self.eventMessagesSlider.maximumValue = 0;
     
+    [self.eventMessages removeAllObjects];
     [self updateUI];
 }
 
-- (IBAction)eventMessagesHistorySlide
+- (NSString *)gameName
 {
-    int pos = (int)self.eventMessagesSlider.value;
-    if(pos < [self.eventMessages count])
-    {
-        [self.eventMessageLabel setText:self.eventMessages[pos]];
-        [self.eventMessageLabel setAlpha:0.5];
-    }
+    return @"Set Card Game";
 }
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -156,14 +187,14 @@
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-set-game.jpg"]]];
     
-    // code for making rounded corners of our custom buttons
+    // code for making rounded corners of our custom buttons, quartz2d required for this code
     for (UIButton *button in self.playingSetButtons)
     {
         button.layer.cornerRadius = 7.0f;
         button.layer.masksToBounds = YES;
     }
     
-    [self startNewGame];
+    [self updateUI];
 }
 
 - (void)didReceiveMemoryWarning

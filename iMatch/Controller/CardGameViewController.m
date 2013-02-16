@@ -10,6 +10,7 @@
 #import "CardGame.h"
 #import "PlayingCardDeck.h"
 #import "PlayingCard.h"
+#import "GameResult.h"
 
 @interface CardGameViewController ()
 
@@ -27,6 +28,8 @@
 @property (nonatomic) NSUInteger numberOfCardsToMatch;
 
 @property (strong, nonatomic) CardGame *game;
+@property (strong, nonatomic) Deck *deck;
+@property (strong, nonatomic) GameResult *gameResult;
 
 @end
 
@@ -36,7 +39,31 @@
 
 @implementation CardGameViewController
 
--(NSMutableArray *)eventMessages
+- (Deck *)deck
+{
+    if (!_deck) {
+        _deck = [[PlayingCardDeck alloc] init];
+    }
+    return _deck;
+}
+
+- (CardGame *)game
+{
+    if (!_game) {
+        _game = [[CardGame alloc] initWithNumberOfCards:[self.playingCardButtons count] fromCardDeck:self.deck andNumberOfCardsToMatch:self.numberOfCardsToMatch];
+    }
+    return _game;
+}
+
+- (GameResult *)gameResult
+{
+    if (!_gameResult) {
+        _gameResult = [[GameResult alloc] initWithGameName:[self gameName]];
+    }
+    return _gameResult;
+}
+
+- (NSMutableArray *)eventMessages
 {
     if (!_eventMessages) {
         _eventMessages = [NSMutableArray array];
@@ -57,23 +84,24 @@
     self.game.numberOfCardsToMatch = _numberOfCardsToMatch;
 }
 
-- (void)initDeckAndGame
+- (IBAction)flipCardClick:(UIButton *)sender
 {
+    self.flipsCount++;
+    self.gameTypeSegmentControl.enabled = NO;
     
-    // init standart 52-cards deck
-    Deck* deck = [[PlayingCardDeck alloc] init];
-    // create game with number of cards equals to number of stored buttons
-    self.game = [[CardGame alloc] initWithNumberOfCards:[self.playingCardButtons count] fromCardDeck: deck andNumberOfCardsToMatch:self.numberOfCardsToMatch];
-    
+    [self.game flipCardAtIndex:[self.playingCardButtons indexOfObject:sender]];
     [self updateUI];
 }
 
 - (void) updateUI
 {
     [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.game.score]];
+    self.gameResult.score = self.game.score;
+    
     [self.eventMessages addObject:self.game.lastEventMessage];
-    self.eventMessagesSlider.maximumValue += 1;
-    [self.eventMessagesSlider setValue:self.eventMessagesSlider.maximumValue animated:NO];
+    
+    self.eventMessagesSlider.maximumValue = [self.eventMessages count];
+    self.eventMessagesSlider.value = self.eventMessagesSlider.maximumValue;
     
     [self.eventMessageLabel setAttributedText:self.game.lastEventMessage];
     [self.eventMessageLabel setAlpha:1];
@@ -100,23 +128,14 @@
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (IBAction)eventMessagesHistorySlide
 {
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-	// the user clicked one of the OK/Cancel buttons
-	if ([title isEqualToString:@"OK"])
-	{      
-        self.flipsCount = 0;
-        [self.eventMessages removeAllObjects];
-        self.eventMessagesSlider.maximumValue = 0;
-        self.gameTypeSegmentControl.enabled = true;
-        [self initDeckAndGame];
-	}
-	else if ([title isEqualToString:@"Cancel"])
-	{        
-        // do nothing
-        
-	}
+    NSUInteger pos = (int)self.eventMessagesSlider.value;
+    if(pos < [self.eventMessages count])
+    {
+        [self.eventMessageLabel setAttributedText:self.eventMessages[pos]];
+        [self.eventMessageLabel setAlpha:0.5];
+    }
 }
 
 - (IBAction)gameTypeClick
@@ -126,21 +145,12 @@
 
 - (IBAction)dealClick
 {
-    [self restartGame];
-}
-- (IBAction)eventMessagesHistorySlide
-{
-    int pos = (int)self.eventMessagesSlider.value;
-    if(pos < [self.eventMessages count])
-    {
-        [self.eventMessageLabel setAttributedText:self.eventMessages[pos]];
-        [self.eventMessageLabel setAlpha:0.5];
-    }
+    [self showAlertMessage];
 }
 
-- (void)restartGame
+- (void) showAlertMessage
 {
-    NSString *message = [NSString stringWithFormat:@"Are you sure want to start a new game ?"];
+    NSString *message = [NSString stringWithFormat:@"Are you sure want to start a new game?"];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New game"
                                                     message:message
@@ -150,12 +160,37 @@
 	[alert show];
 }
 
-- (IBAction)flipCardClick:(UIButton *)sender
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    self.gameTypeSegmentControl.enabled = NO;
-    [self.game flipCardAtIndex:[self.playingCardButtons indexOfObject:sender]];
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+	if ([title isEqualToString:@"OK"])
+	{
+        [self restartGame];
+	}
+	else if ([title isEqualToString:@"Cancel"])
+	{
+        // do nothing
+        
+	}
+}
+
+- (void)restartGame
+{
+    self.deck = nil;
+    self.game = nil;
+    self.gameResult = nil;
+    
+    self.flipsCount = 0;
+    self.eventMessagesSlider.maximumValue = 0;
+    self.gameTypeSegmentControl.enabled = true;
+    
+    [self.eventMessages removeAllObjects];
     [self updateUI];
-    self.flipsCount++;
+}
+
+- (NSString *)gameName
+{
+    return @"Card Game";
 }
 
 - (void)viewDidLoad
@@ -165,7 +200,7 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-card-game.jpg"]]];
     
     self.numberOfCardsToMatch = 2;
-    [self initDeckAndGame];
+    [self updateUI];
 }
 
 - (void)didReceiveMemoryWarning

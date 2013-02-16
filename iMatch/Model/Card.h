@@ -13,7 +13,7 @@
 @property (nonatomic, getter = isFaceUp) BOOL faceUp;
 @property (nonatomic, getter = isPlayable) BOOL playable;
 
-- (int) match:(NSArray *)otherCards;
+- (NSInteger) match:(NSArray *)otherCards;
 - (NSAttributedString *) attributedDescription;
 
 @end

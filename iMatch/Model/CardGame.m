@@ -13,7 +13,7 @@
 @interface CardGame ()
 
 @property (strong, nonatomic) NSMutableArray* cards;
-@property (readwrite, nonatomic) int score;
+@property (readwrite, nonatomic) NSInteger score;
 @property (readwrite, strong, nonatomic) NSAttributedString *lastEventMessage;
 
 @end
@@ -102,7 +102,7 @@
     [cardsToMatch removeObject:card];
     
     
-    int matchScore = [card match:cardsToMatch];
+    NSInteger matchScore = [card match:cardsToMatch];
     if (matchScore)
     {
         for (Card* card in cardsToMatch)
@@ -139,7 +139,7 @@
 
 - (NSUInteger)countOfPlayingCardsFacingUp
 {
-    int count = 0;
+    NSUInteger count = 0;
     for (Card *card in self.cards)
     {
         if (card.isPlayable && card.isFaceUp)
