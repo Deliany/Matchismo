@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/PlayingCard.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/PlayingCard</TokenIdentifier>
+			<Abstract type="html">A PlayingCard object represents a card which is porker card without Joker.</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PlayingCard/setSuit:</TokenIdentifier>
+			<Abstract type="html">The value of card suit.</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *suit</Declaration>
+			
+			
+			<Anchor>//api/name/suit</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PlayingCard/suit</TokenIdentifier>
+			<Abstract type="html">The value of card suit.</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *suit</Declaration>
+			
+			
+			<Anchor>//api/name/suit</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PlayingCard/setRank:</TokenIdentifier>
+			<Abstract type="html">The value of card rank</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger rank</Declaration>
+			
+			
+			<Anchor>//api/name/rank</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/PlayingCard/rank</TokenIdentifier>
+			<Abstract type="html">The value of card rank</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger rank</Declaration>
+			
+			
+			<Anchor>//api/name/rank</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PlayingCard/suits</TokenIdentifier>
+			<Abstract type="html">Returns an array of valid NSString suit value.</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSArray *)suits</Declaration>
+			
+			<ReturnValue><Abstract type="html">Returns a an array of suits.</Abstract></ReturnValue>
+			<Anchor>//api/name/suits</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PlayingCard/ranks</TokenIdentifier>
+			<Abstract type="html">Returns an array of valid NSString ranks value.</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSArray *)ranks</Declaration>
+			
+			<ReturnValue><Abstract type="html">Returns a an array of ranks.</Abstract></ReturnValue>
+			<Anchor>//api/name/ranks</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/PlayingCard/maxRank</TokenIdentifier>
+			<Abstract type="html">Returns max value of all possible rank values.</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSUInteger)maxRank</Declaration>
+			
+			<ReturnValue><Abstract type="html">Returns a max value.</Abstract></ReturnValue>
+			<Anchor>//api/name/maxRank</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/PlayingCard/initWithSuit:andRank:</TokenIdentifier>
+			<Abstract type="html">Initialiazes PlayingCard object with given suit and rank</Abstract>
+			<DeclaredIn>PlayingCard.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithSuit:(NSString *)suit andRank:(NSUInteger)rank</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>suit</Name>
+					<Abstract type="html">A NSString card suit representation</Abstract>
+				</Parameter><Parameter>
+					<Name>rank</Name>
+					<Abstract type="html">A NSUInteger card rank representation</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">PlayingCard instantiated object with given suit and rank</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithSuit:andRank:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

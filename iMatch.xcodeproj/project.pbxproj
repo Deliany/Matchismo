@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B7A383AA16D16D0300B2BB10 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B7A383AB16D16D0300B2BB10 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				B7A383AE16D16D1F00B2BB10 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		B71E52BF16CE3ABF0086DB40 /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71E52B216CE3ABF0086DB40 /* CardGameViewController.m */; };
 		B71E52C016CE3ABF0086DB40 /* SetCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71E52B416CE3ABF0086DB40 /* SetCardGameViewController.m */; };
@@ -33,6 +47,7 @@
 		B76445ED16C5495D00433E37 /* SetDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = B76445EC16C5495D00433E37 /* SetDeck.m */; };
 		B76445F816C57B8400433E37 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76445F716C57B8300433E37 /* QuartzCore.framework */; };
 		B76A52D916BE7136004B316E /* CardGame.m in Sources */ = {isa = PBXBuildFile; fileRef = B76A52D816BE7136004B316E /* CardGame.m */; };
+		B7A383A916D16BE200B2BB10 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7A383A816D16BE200B2BB10 /* AppledocSettings.plist */; };
 		B7C9C56A16C3F58E00A6AD72 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9C56916C3F58E00A6AD72 /* Deck.m */; };
 		B7C9C57616C4149C00A6AD72 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9C57516C4149C00A6AD72 /* SetCard.m */; };
 		B7E315CE16CFA6B200A5DD19 /* SettingsTabImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B7E315CD16CFA6B200A5DD19 /* SettingsTabImage.png */; };
@@ -79,6 +94,7 @@
 		B76445F716C57B8300433E37 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B76A52D716BE7136004B316E /* CardGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardGame.h; path = Model/CardGame.h; sourceTree = "<group>"; };
 		B76A52D816BE7136004B316E /* CardGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardGame.m; path = Model/CardGame.m; sourceTree = "<group>"; };
+		B7A383A816D16BE200B2BB10 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		B7C9C56816C3F58E00A6AD72 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = Model/Deck.h; sourceTree = "<group>"; };
 		B7C9C56916C3F58E00A6AD72 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Deck.m; path = Model/Deck.m; sourceTree = "<group>"; };
 		B7C9C57416C4149C00A6AD72 /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCard.h; path = Model/SetCard.h; sourceTree = "<group>"; };
@@ -184,6 +200,7 @@
 				B74C3B9C16BDA86B00D36C7A /* InfoPlist.strings */,
 				B74C3B9F16BDA86B00D36C7A /* main.m */,
 				B74C3BA116BDA86B00D36C7A /* iMatch-Prefix.pch */,
+				B7A383A816D16BE200B2BB10 /* AppledocSettings.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -253,6 +270,7 @@
 			projectRoot = "";
 			targets = (
 				B74C3B8F16BDA86B00D36C7A /* iMatch */,
+				B7A383AA16D16D0300B2BB10 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -274,10 +292,27 @@
 				B71E52C816CE3ABF0086DB40 /* ScoresTabImage.png in Resources */,
 				B71E52C916CE3ABF0086DB40 /* SetGameTabImage.png in Resources */,
 				B7E315CE16CFA6B200A5DD19 /* SettingsTabImage.png in Resources */,
+				B7A383A916D16BE200B2BB10 /* AppledocSettings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B7A383AE16D16D1F00B2BB10 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Build an Xcode documentation\n/usr/local/bin/appledoc \"$SOURCE_ROOT/$PROJECT_NAME\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B74C3B8C16BDA86B00D36C7A /* Sources */ = {
@@ -403,6 +438,20 @@
 			};
 			name = Release;
 		};
+		B7A383AC16D16D0300B2BB10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B7A383AD16D16D0300B2BB10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -423,6 +472,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		B7A383AB16D16D0300B2BB10 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7A383AC16D16D0300B2BB10 /* Debug */,
+				B7A383AD16D16D0300B2BB10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

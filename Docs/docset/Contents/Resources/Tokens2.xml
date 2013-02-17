@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/CardGame.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/CardGame</TokenIdentifier>
+			<Abstract type="html">A CardMatchingGame object contains all game playing logic. It also caculates score and hold game states.</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/setScore:</TokenIdentifier>
+			<Abstract type="html">The value of game score.</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, nonatomic) NSInteger score</Declaration>
+			
+			
+			<Anchor>//api/name/score</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CardGame/score</TokenIdentifier>
+			<Abstract type="html">The value of game score.</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, nonatomic) NSInteger score</Declaration>
+			
+			
+			<Anchor>//api/name/score</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/setNumberOfCardsToMatch:</TokenIdentifier>
+			<Abstract type="html">The number of cards, needed to match at once</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger numberOfCardsToMatch</Declaration>
+			
+			
+			<Anchor>//api/name/numberOfCardsToMatch</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CardGame/numberOfCardsToMatch</TokenIdentifier>
+			<Abstract type="html">The number of cards, needed to match at once</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger numberOfCardsToMatch</Declaration>
+			
+			
+			<Anchor>//api/name/numberOfCardsToMatch</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/setLastEventMessage:</TokenIdentifier>
+			<Abstract type="html">Message that contains last playing output,
+for example which cards was matched together and for how much score they matched</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSAttributedString *lastEventMessage</Declaration>
+			
+			
+			<Anchor>//api/name/lastEventMessage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CardGame/lastEventMessage</TokenIdentifier>
+			<Abstract type="html">Message that contains last playing output,
+for example which cards was matched together and for how much score they matched</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSAttributedString *lastEventMessage</Declaration>
+			
+			
+			<Anchor>//api/name/lastEventMessage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:</TokenIdentifier>
+			<Abstract type="html">Initialized CardGame object with number of playing cards from given deck and also number of cards needed to match at once.</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithNumberOfCards:(NSUInteger)numOfCards fromCardDeck:(Deck *)deck andNumberOfCardsToMatch:(NSUInteger)numberOfCards</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>numOfCards</Name>
+					<Abstract type="html">Cards that will be randomly drawn from given deck</Abstract>
+				</Parameter><Parameter>
+					<Name>deck</Name>
+					<Abstract type="html">Deck that will be used as source for drawing random cards</Abstract>
+				</Parameter><Parameter>
+					<Name>numberOfCards</Name>
+					<Abstract type="html">Accordingly to rules, this number will be used to validate whether cards is ready to match or not</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">Instantiated CardGame object</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/flipCardAtIndex:</TokenIdentifier>
+			<Abstract type="html">Perform a card flipping game play.</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>- (void)flipCardAtIndex:(NSUInteger)index</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>index</Name>
+					<Abstract type="html">value of card index in the Deck object.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/flipCardAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/cardAtIndex:</TokenIdentifier>
+			<Abstract type="html">Get card of the index.</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>- (Card *)cardAtIndex:(NSUInteger)index</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>index</Name>
+					<Abstract type="html">value of card index in the Deck object.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">a Card object of the index.</Abstract></ReturnValue>
+			<Anchor>//api/name/cardAtIndex:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

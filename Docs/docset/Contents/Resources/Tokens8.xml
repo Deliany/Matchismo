@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SetDeck.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SetDeck</TokenIdentifier>
+			<Abstract type="html">A SetGameDeck  consists of 81 cards varying in four features: number (one, two, or three); symbol (diamond, squiggle, oval); shading (solid, striped, or open); and color (red, green, or purple).[1] Each possible combination
+of features (e.g., a card with three striped green diamonds) appears precisely once in the deck.</Abstract>
+			<DeclaredIn>SetDeck.h</DeclaredIn>
+			
+			<NodeRef refid="8"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

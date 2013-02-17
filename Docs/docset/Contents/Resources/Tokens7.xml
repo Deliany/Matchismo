@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SetCard.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SetCard</TokenIdentifier>
+			<Abstract type="html">A SetGameCard object is varying in four features: number (1, 2, or 3); symbol (diamond, squiggle, oval); shading (solid, striped, or open); and color (red, green, or purple).</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>
+			
+			<NodeRef refid="7"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SetCard/setRank:</TokenIdentifier>
+			<Abstract type="html">The value of number.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger rank</Declaration>
+			
+			
+			<Anchor>//api/name/rank</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SetCard/rank</TokenIdentifier>
+			<Abstract type="html">The value of number.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSUInteger rank</Declaration>
+			
+			
+			<Anchor>//api/name/rank</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SetCard/setRankString:</TokenIdentifier>
+			<Abstract type="html">NSString representation of number.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSString *rankString</Declaration>
+			
+			
+			<Anchor>//api/name/rankString</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SetCard/rankString</TokenIdentifier>
+			<Abstract type="html">NSString representation of number.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSString *rankString</Declaration>
+			
+			
+			<Anchor>//api/name/rankString</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SetCard/setSymbol:</TokenIdentifier>
+			<Abstract type="html">The value of symbol.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *symbol</Declaration>
+			
+			
+			<Anchor>//api/name/symbol</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SetCard/symbol</TokenIdentifier>
+			<Abstract type="html">The value of symbol.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *symbol</Declaration>
+			
+			
+			<Anchor>//api/name/symbol</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SetCard/setShading:</TokenIdentifier>
+			<Abstract type="html">The value of shading.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *shading</Declaration>
+			
+			
+			<Anchor>//api/name/shading</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SetCard/shading</TokenIdentifier>
+			<Abstract type="html">The value of shading.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *shading</Declaration>
+			
+			
+			<Anchor>//api/name/shading</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SetCard/setColor:</TokenIdentifier>
+			<Abstract type="html">The value of color.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *color</Declaration>
+			
+			
+			<Anchor>//api/name/color</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SetCard/color</TokenIdentifier>
+			<Abstract type="html">The value of color.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *color</Declaration>
+			
+			
+			<Anchor>//api/name/color</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SetCard/initWithRank:symbol:shading:color:</TokenIdentifier>
+			<Abstract type="html">Returns a newly initialized SetGameCard object with value specified.</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithRank:(NSUInteger)rank symbol:(NSString *)symbol shading:(NSDictionary *)shading color:(NSDictionary *)color</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>rank</Name>
+					<Abstract type="html">Number of set card</Abstract>
+				</Parameter><Parameter>
+					<Name>symbol</Name>
+					<Abstract type="html">Symbols of set card</Abstract>
+				</Parameter><Parameter>
+					<Name>shading</Name>
+					<Abstract type="html">Shading of set card (dictionary with attributed values)</Abstract>
+				</Parameter><Parameter>
+					<Name>color</Name>
+					<Abstract type="html">Color of set card (dictionary with attributed values)</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">Instantited SetCard object</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithRank:symbol:shading:color:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SetCard/ranks</TokenIdentifier>
+			<Abstract type="html">Gets the number of SetGameCard object</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSArray *)ranks</Declaration>
+			
+			<ReturnValue><Abstract type="html">array of numbers in string representation.</Abstract></ReturnValue>
+			<Anchor>//api/name/ranks</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SetCard/maxRank</TokenIdentifier>
+			<Abstract type="html">Returns max number in set card game</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSUInteger)maxRank</Declaration>
+			
+			<ReturnValue><Abstract type="html">maximum possible number of set card</Abstract></ReturnValue>
+			<Anchor>//api/name/maxRank</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SetCard/symbols</TokenIdentifier>
+			<Abstract type="html">Gets the symbol of SetGameCard object</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSArray *)symbols</Declaration>
+			
+			<ReturnValue><Abstract type="html">array of symbols in string representation.</Abstract></ReturnValue>
+			<Anchor>//api/name/symbols</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SetCard/shadings</TokenIdentifier>
+			<Abstract type="html">Gets the shading of SetGameCard object</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSArray *)shadings</Declaration>
+			
+			<ReturnValue><Abstract type="html">array of dictionaries of possible shadings.</Abstract></ReturnValue>
+			<Anchor>//api/name/shadings</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/SetCard/colors</TokenIdentifier>
+			<Abstract type="html">Gets the color of SetGameCard object</Abstract>
+			<DeclaredIn>SetCard.h</DeclaredIn>			
+			
+			<Declaration>+ (NSArray *)colors</Declaration>
+			
+			<ReturnValue><Abstract type="html">array of dictionaries of possible colors.</Abstract></ReturnValue>
+			<Anchor>//api/name/colors</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -11,7 +11,7 @@
 @implementation Card
 
 
-- (id)init
+-(id)init
 {
     if(self = [super init])
     {
@@ -22,7 +22,7 @@
 }
 
 
-- (NSInteger)match:(NSArray *)otherCards
+-(NSInteger)match:(NSArray *)otherCards
 {
     NSInteger score = 0;
     for (id obj in otherCards)
@@ -40,7 +40,12 @@
     return score;
 }
 
-- (NSAttributedString *)attributedDescription
+-(NSString *)description
+{
+    return @"";
+}
+
+-(NSAttributedString *)attributedDescription
 {
     return [[NSAttributedString alloc] initWithString:[self description]];
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/Card.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/Card</TokenIdentifier>
+			<Abstract type="html">A Card object represents a card abstract concept in matching game.
+This is abstract class of Card in game. It can be any kind of card.</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Card/setFaceUp:</TokenIdentifier>
+			<Abstract type="html">A Boolean value that determines weather the Card object is facing up or not.</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, getter=isFaceUp) BOOL faceUp</Declaration>
+			
+			
+			<Anchor>//api/name/faceUp</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Card/faceUp</TokenIdentifier>
+			<Abstract type="html">A Boolean value that determines weather the Card object is facing up or not.</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, getter=isFaceUp) BOOL faceUp</Declaration>
+			
+			
+			<Anchor>//api/name/faceUp</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Card/setPlayable:</TokenIdentifier>
+			<Abstract type="html">A Boolean value that determines weather the Card object can be flip or not.</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, getter=isPlayable) BOOL playable</Declaration>
+			
+			
+			<Anchor>//api/name/playable</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Card/playable</TokenIdentifier>
+			<Abstract type="html">A Boolean value that determines weather the Card object can be flip or not.</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, getter=isPlayable) BOOL playable</Declaration>
+			
+			
+			<Anchor>//api/name/playable</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Card/match:</TokenIdentifier>
+			<Abstract type="html">Returns a match score of this Card object and other cards.</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>- (NSInteger)match:(NSArray *)otherCards</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>otherCards</Name>
+					<Abstract type="html">A Card array to compared with.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">Returns comparing score.</Abstract></ReturnValue>
+			<Anchor>//api/name/match:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Card/description</TokenIdentifier>
+			<Abstract type="html">Returns card text description</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">Returns card text description.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Card/attributedDescription</TokenIdentifier>
+			<Abstract type="html">Returns attributed card text description</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/Card/description</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (NSAttributedString *)attributedDescription</Declaration>
+			
+			<ReturnValue><Abstract type="html">Returns attributed card text description.</Abstract></ReturnValue>
+			<Anchor>//api/name/attributedDescription</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

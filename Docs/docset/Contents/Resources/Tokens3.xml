@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/Deck.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/Deck</TokenIdentifier>
+			<Abstract type="html">A Deck object represents a collection of Card objects handles Card abstract concept in game.</Abstract>
+			<DeclaredIn>Deck.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Deck/setNumberOfAvailableCards:</TokenIdentifier>
+			<Abstract type="html">A NSUInteger number of available cards in Deck object</Abstract>
+			<DeclaredIn>Deck.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, nonatomic) NSUInteger numberOfAvailableCards</Declaration>
+			
+			
+			<Anchor>//api/name/numberOfAvailableCards</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Deck/numberOfAvailableCards</TokenIdentifier>
+			<Abstract type="html">A NSUInteger number of available cards in Deck object</Abstract>
+			<DeclaredIn>Deck.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, nonatomic) NSUInteger numberOfAvailableCards</Declaration>
+			
+			
+			<Anchor>//api/name/numberOfAvailableCards</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Deck/addCard:</TokenIdentifier>
+			<Abstract type="html">Inserts a given card in the bottom of the Deck.</Abstract>
+			<DeclaredIn>Deck.h</DeclaredIn>			
+			
+			<Declaration>- (void)addCard:(Card *)card</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>card</Name>
+					<Abstract type="html">Card object that will be inserted.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addCard:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Deck/drawRandomCard</TokenIdentifier>
+			<Abstract type="html">Returns a random card from the Deck object and remove it from the Deck object.</Abstract>
+			<DeclaredIn>Deck.h</DeclaredIn>			
+			
+			<Declaration>- (Card *)drawRandomCard</Declaration>
+			
+			<ReturnValue><Abstract type="html">Returns a Card object.</Abstract></ReturnValue>
+			<Anchor>//api/name/drawRandomCard</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
