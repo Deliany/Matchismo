@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Deck.h"
 
 @interface CardGameViewController : UIViewController <UIAlertViewDelegate>
+
+-(Deck*)createDeck; // abstract
+@property (nonatomic) NSUInteger startingCardCount; // abstract
 
 @end

@@ -8,7 +8,6 @@
 
 #import "CardGameViewController.h"
 #import "CardGame.h"
-#import "PlayingCardDeck.h"
 #import "PlayingCard.h"
 #import "GameResult.h"
 
@@ -20,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventMessageLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameTypeSegmentControl;
 @property (weak, nonatomic) IBOutlet UISlider *eventMessagesSlider;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *playingCardButtons;
+@property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 // other properties
 @property (strong, nonatomic) NSMutableArray *eventMessages;
@@ -39,18 +38,18 @@
 
 @implementation CardGameViewController
 
-- (Deck *)deck
-{
-    if (!_deck) {
-        _deck = [[PlayingCardDeck alloc] init];
-    }
-    return _deck;
-}
+//- (Deck *)deck
+//{
+//    if (!_deck) {
+//        _deck = [[PlayingCardDeck alloc] init];
+//    }
+//    return _deck;
+//}
 
 - (CardGame *)game
 {
     if (!_game) {
-        _game = [[CardGame alloc] initWithNumberOfCards:[self.playingCardButtons count] fromCardDeck:self.deck andNumberOfCardsToMatch:self.numberOfCardsToMatch];
+        _game = [[CardGame alloc] initWithNumberOfCards:self.startingCardCount fromCardDeck:[self createDeck] andNumberOfCardsToMatch:self.numberOfCardsToMatch];
     }
     return _game;
 }
@@ -71,6 +70,11 @@
     return _eventMessages;
 }
 
+-(Deck*)createDeck
+{
+    return nil; // abstract
+}
+
 - (void)setFlipsCount:(NSUInteger)flipsCount
 {
     _flipsCount = flipsCount;
@@ -89,7 +93,8 @@
     self.flipsCount++;
     self.gameTypeSegmentControl.enabled = NO;
     
-    [self.game flipCardAtIndex:[self.playingCardButtons indexOfObject:sender]];
+    int index = 0;
+    [self.game flipCardAtIndex:index];
     [self updateUI];
 }
 
@@ -106,26 +111,6 @@
     [self.eventMessageLabel setAttributedText:self.game.lastEventMessage];
     [self.eventMessageLabel setAlpha:1];
     
-    for (UIButton *button in self.playingCardButtons)
-    {
-        Card *card = [self.game cardAtIndex:[self.playingCardButtons indexOfObject:button]];
-        [button setTitle:@"" forState:UIControlStateNormal];
-        [button setTitle:[card description] forState:UIControlStateSelected];
-        [button setTitle:[card description] forState:UIControlStateSelected | UIControlStateDisabled];
-        
-        if(card.isFaceUp)
-        {
-            [button setBackgroundImage:nil forState:UIControlStateNormal];
-        }
-        else
-        {
-            [button setBackgroundImage:[UIImage imageNamed:@"cardback.jpg"] forState:UIControlStateNormal];
-            [button setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
-        }
-        button.selected = card.isFaceUp;
-        button.enabled = card.playable;
-        button.alpha = card.isPlayable ? 1 : 0.3;
-    }
 }
 
 - (IBAction)eventMessagesHistorySlide
@@ -176,7 +161,7 @@
 
 - (void)restartGame
 {
-    self.deck = nil;
+    //self.deck = nil;
     self.game = nil;
     self.gameResult = nil;
     

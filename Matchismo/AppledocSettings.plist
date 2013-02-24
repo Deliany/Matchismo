@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--project-company</key>
+	<string>Deliany Production</string>
+	<key>--warn-missing-arg</key>
+	<true/>
+	<key>--install-docset</key>
+	<true/>
+	<key>--keep-undocumented-members</key>
+	<true/>
+	<key>--project-version</key>
+	<string>1.0</string>
+	<key>--project-name</key>
+	<string>iMatch</string>
+	<key>--warn-undocumented-object</key>
+	<true/>
+	<key>--keep-undocumented-objects</key>
+	<true/>
+	<key>--create-docset</key>
+	<true/>
+	<key>--docset-platform-family</key>
+	<string>iphoneos</string>
+	<key>--output</key>
+	<string>Docs/</string>
+	<key>--logformat</key>
+	<string>xcode</string>
+	<key>--warn-unknown-directive</key>
+	<true/>
+	<key>--warn-undocumented-member</key>
+	<true/>
+	<key>--no-repeat-first-par</key>
+	<true/>
+	<key>--explicit-crossref</key>
+	<true/>
+	<key>--company-id</key>
+	<string>com.clearsky</string>
+	<key>--warn-empty-description</key>
+	<true/>
+	<key>--ignore</key>
+	<array>
+		<string>ThirdParty</string>
+		<string>Libraries</string>
+		<string>Frameworks</string>
+		<string>Testing</string>
+		<string>ViewController.h</string>
+		<string>AppDelegate.h</string>
+		<string>ViewCell.h</string>
+		<string>View.h</string>
+		<string>.m</string>
+	</array>
+	<key>--keep-intermediate-files</key>
+	<true/>
+	<key>--exit-threshold</key>
+	<integer>2</integer>
+</dict>
+</plist>
