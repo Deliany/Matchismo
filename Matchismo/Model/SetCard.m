@@ -161,7 +161,7 @@
 - (NSString *)description
 {
     
-    return [NSString stringWithFormat: @"%u%@%@%@", self.rank, self.symbol, self.shading, self.color];
+    return [[self attributedDescription] string];
 }
 
 - (NSAttributedString *)attributedDescription

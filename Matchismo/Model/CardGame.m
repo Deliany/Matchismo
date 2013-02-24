@@ -53,11 +53,19 @@
     return self;
 }
 
+- (void)clearLastPlayedStatus
+{
+    for (Card* card in self.cards) {
+        card.lastPlayed = NO;
+    }
+}
+
 #define NOT_MATCH_PENALTY 2
 #define FLIP_PENALTY 1
 
 - (void) flipCardAtIndex:(NSUInteger) index
 {
+    [self clearLastPlayedStatus];
     Card *currentCard = [self cardAtIndex:index];
         
     if (currentCard && currentCard.isPlayable)
@@ -74,6 +82,7 @@
         }
         self.score -= FLIP_PENALTY;
         currentCard.faceUp = !currentCard.faceUp;
+        currentCard.lastPlayed = YES;
         
         if([self countOfPlayingCardsFacingUp] == self.numberOfCardsToMatch)
         {
@@ -92,11 +101,20 @@
         if (card.isFaceUp && card.isPlayable)
         {
             [cardsToMatch addObject:card];
-            [cardsContents appendAttributedString:[card attributedDescription]];
-            [cardsContents appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
         }
     }
-    [cardsContents appendAttributedString:[[NSAttributedString alloc] initWithString:@"\b\b"]];
+    
+    for (Card* matchCard in cardsToMatch)
+    {
+        [cardsContents appendAttributedString:[matchCard attributedDescription]];
+        if (![matchCard isEqual:[cardsToMatch lastObject]])
+        {
+            [cardsContents appendAttributedString:[[NSAttributedString alloc] initWithString:@" & "]];
+        }
+        
+    matchCard.lastPlayed = YES;
+    
+    }
     
     Card* card = [cardsToMatch lastObject];
     [cardsToMatch removeObject:card];

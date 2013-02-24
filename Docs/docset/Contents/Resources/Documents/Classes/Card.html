@@ -42,6 +42,8 @@
 	
 	<option value="//api/name/faceUp">&nbsp;&nbsp;&nbsp;&nbsp;faceUp</option>
 	
+	<option value="//api/name/lastPlayed">&nbsp;&nbsp;&nbsp;&nbsp;lastPlayed</option>
+	
 	<option value="//api/name/playable">&nbsp;&nbsp;&nbsp;&nbsp;playable</option>
 	
 	
@@ -88,6 +90,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/faceUp">faceUp</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastPlayed">lastPlayed</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playable">playable</a></span></li>
 	
@@ -162,14 +166,21 @@ This is abstract class of Card in game. It can be any kind of card.</p>
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/faceUp">&nbsp;&nbsp;faceUp</a></code>
-		<span class="tooltip"><p>A Boolean value that determines weather the Card object is facing up or not.</p></span>
+		<span class="tooltip"><p>A Boolean value that determines whether the Card object is facing up or not.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/playable">&nbsp;&nbsp;playable</a></code>
-		<span class="tooltip"><p>A Boolean value that determines weather the Card object can be flip or not.</p></span>
+		<span class="tooltip"><p>A Boolean value that determines whether the Card object can be flip or not.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/lastPlayed">&nbsp;&nbsp;lastPlayed</a></code>
+		<span class="tooltip"><p>A Boolean value that determines whether the Card object played(participated) last time in matching</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -230,12 +241,48 @@ This is abstract class of Card in game. It can be any kind of card.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A Boolean value that determines weather the Card object is facing up or not.</p>
+		<p>A Boolean value that determines whether the Card object is facing up or not.</p>
 	</div>		
 	
     
 
 	<div class="method-subsection method-declaration"><code>@property (nonatomic, getter=isFaceUp) BOOL faceUp</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Card.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/lastPlayed" title="lastPlayed"></a>
+	<h3 class="subsubtitle method-title">lastPlayed</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A Boolean value that determines whether the Card object played(participated) last time in matching</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL lastPlayed</code></div>
 
     
 	
@@ -266,7 +313,7 @@ This is abstract class of Card in game. It can be any kind of card.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A Boolean value that determines weather the Card object can be flip or not.</p>
+		<p>A Boolean value that determines whether the Card object can be flip or not.</p>
 	</div>		
 	
     

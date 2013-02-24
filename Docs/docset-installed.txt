@@ -1,4 +1,4 @@
 Documentation set was installed to Xcode!
 
 Path: /Users/Deliany/Library/Developer/Shared/Documentation/DocSets/com.clearsky.iMatch.docset
-Time: 2013-02-24 13:05:57 +0000
+Time: 2013-02-24 14:00:23 +0000

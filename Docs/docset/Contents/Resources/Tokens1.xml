@@ -14,7 +14,7 @@ This is abstract class of Card in game. It can be any kind of card.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/Card/setFaceUp:</TokenIdentifier>
-			<Abstract type="html">A Boolean value that determines weather the Card object is facing up or not.</Abstract>
+			<Abstract type="html">A Boolean value that determines whether the Card object is facing up or not.</Abstract>
 			<DeclaredIn>Card.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, getter=isFaceUp) BOOL faceUp</Declaration>
@@ -25,7 +25,7 @@ This is abstract class of Card in game. It can be any kind of card.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/Card/faceUp</TokenIdentifier>
-			<Abstract type="html">A Boolean value that determines weather the Card object is facing up or not.</Abstract>
+			<Abstract type="html">A Boolean value that determines whether the Card object is facing up or not.</Abstract>
 			<DeclaredIn>Card.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, getter=isFaceUp) BOOL faceUp</Declaration>
@@ -36,7 +36,7 @@ This is abstract class of Card in game. It can be any kind of card.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/Card/setPlayable:</TokenIdentifier>
-			<Abstract type="html">A Boolean value that determines weather the Card object can be flip or not.</Abstract>
+			<Abstract type="html">A Boolean value that determines whether the Card object can be flip or not.</Abstract>
 			<DeclaredIn>Card.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, getter=isPlayable) BOOL playable</Declaration>
@@ -47,13 +47,35 @@ This is abstract class of Card in game. It can be any kind of card.</Abstract>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/Card/playable</TokenIdentifier>
-			<Abstract type="html">A Boolean value that determines weather the Card object can be flip or not.</Abstract>
+			<Abstract type="html">A Boolean value that determines whether the Card object can be flip or not.</Abstract>
 			<DeclaredIn>Card.h</DeclaredIn>			
 			
 			<Declaration>@property (nonatomic, getter=isPlayable) BOOL playable</Declaration>
 			
 			
 			<Anchor>//api/name/playable</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Card/setLastPlayed:</TokenIdentifier>
+			<Abstract type="html">A Boolean value that determines whether the Card object played(participated) last time in matching</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL lastPlayed</Declaration>
+			
+			
+			<Anchor>//api/name/lastPlayed</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Card/lastPlayed</TokenIdentifier>
+			<Abstract type="html">A Boolean value that determines whether the Card object played(participated) last time in matching</Abstract>
+			<DeclaredIn>Card.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL lastPlayed</Declaration>
+			
+			
+			<Anchor>//api/name/lastPlayed</Anchor>
 		</Token>
 		
 		<Token>

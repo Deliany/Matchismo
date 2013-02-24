@@ -135,7 +135,7 @@
     {
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
-        BOOL animated = card.faceUp ? YES : NO;
+        BOOL animated = card.lastPlayed ? YES : NO;
         [self updateCell:cell usingCard:card animate:animated];
     }
 }

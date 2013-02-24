@@ -20,15 +20,20 @@
 ///------------------------------------------------------------------
 
 /**
- * A Boolean value that determines weather the Card object is facing up or not.
+ * A Boolean value that determines whether the Card object is facing up or not.
  *
  **/
 @property (nonatomic, getter = isFaceUp) BOOL faceUp;
 
 /**
- * A Boolean value that determines weather the Card object can be flip or not.
+ * A Boolean value that determines whether the Card object can be flip or not.
  **/
 @property (nonatomic, getter = isPlayable) BOOL playable;
+
+/**
+ * A Boolean value that determines whether the Card object played(participated) last time in matching
+ **/
+@property (nonatomic) BOOL lastPlayed;
 
 ///---------------------------------------------------------------------------------------
 /// @name Comparing Card

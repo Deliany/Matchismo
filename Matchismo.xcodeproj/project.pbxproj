@@ -284,10 +284,10 @@
 		B74C3B9916BDA86B00D36C7A /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
-				B714252516D4503C0067C91C /* Views */,
-				B71E52B016CE3ABF0086DB40 /* Controller */,
-				B71E52B516CE3ABF0086DB40 /* Design */,
 				B74C3BBA16BDA8E500D36C7A /* Model */,
+				B71E52B016CE3ABF0086DB40 /* Controller */,
+				B714252516D4503C0067C91C /* Views */,
+				B71E52B516CE3ABF0086DB40 /* Design */,
 				B74C3BAB16BDA86B00D36C7A /* MainStoryboard.storyboard */,
 				B74C3B9A16BDA86B00D36C7A /* Supporting Files */,
 			);
