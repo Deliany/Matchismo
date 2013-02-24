@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  iMatch
+//  Matchismo
 //
 //  Created by Deliany Delirium on 02.02.13.
 //  Copyright (c) 2013 Clear Sky. All rights reserved.
@@ -11,7 +11,7 @@
 #import "PlayingCard.h"
 #import "GameResult.h"
 
-@interface CardGameViewController () <UICollectionViewDataSource>
+@interface CardGameViewController () <UICollectionViewDataSource, UIAlertViewDelegate>
 
 // UI outlets
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
@@ -24,10 +24,8 @@
 // other properties
 @property (strong, nonatomic) NSMutableArray *eventMessages;
 @property (nonatomic) NSUInteger flipsCount;
-@property (nonatomic) NSUInteger numberOfCardsToMatch;
 
 @property (strong, nonatomic) CardGame *game;
-@property (strong, nonatomic) Deck *deck;
 @property (strong, nonatomic) GameResult *gameResult;
 
 @end
@@ -38,30 +36,26 @@
 
 @implementation CardGameViewController
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+#pragma mark Abstract methods
+
+-(Deck*)createDeck
 {
-    return 1;
+    return nil; // abstract
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView
-    numberOfItemsInSection:(NSInteger)section
+- (NSString *)gameName
 {
-    return self.startingCardCount;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
-    Card *card = [self.game cardAtIndex:indexPath.item];
-    [self updateCell:cell usingCard:card animate:NO];
-    return cell;
+    return nil; // abstract
 }
 
 -(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card animate:(BOOL)animate
 {
     // abstract
 }
+
+
+#pragma mark -
+#pragma Properties getters or setters
 
 - (CardGame *)game
 {
@@ -87,11 +81,6 @@
     return _eventMessages;
 }
 
--(Deck*)createDeck
-{
-    return nil; // abstract
-}
-
 - (void)setFlipsCount:(NSUInteger)flipsCount
 {
     _flipsCount = flipsCount;
@@ -104,6 +93,29 @@
     _numberOfCardsToMatch = numberOfCardsToMatch;
     self.game.numberOfCardsToMatch = _numberOfCardsToMatch;
 }
+
+
+#pragma mark -
+#pragma UICollectionViewDataSource methods
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView
+    numberOfItemsInSection:(NSInteger)section
+{
+    return self.startingCardCount;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
+    Card *card = [self.game cardAtIndex:indexPath.item];
+    [self updateCell:cell usingCard:card animate:NO];
+    return cell;
+}
+
+
+#pragma mark -
+#pragma UI interaction methods
 
 - (IBAction)flipCardClick:(UITapGestureRecognizer*)gesture
 {
@@ -188,7 +200,6 @@
 
 - (void)restartGame
 {
-    //self.deck = nil;
     self.game = nil;
     self.gameResult = nil;
     
@@ -198,27 +209,6 @@
     
     [self.eventMessages removeAllObjects];
     [self updateUI];
-}
-
-- (NSString *)gameName
-{
-    return @"Card Game";
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-card-game.jpg"]]];
-    
-    self.numberOfCardsToMatch = 2;
-    [self updateUI];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

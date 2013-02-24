@@ -203,23 +203,4 @@
     [self setNeedsDisplay];
 }
 
-#pragma mark - Initialization
-
-- (void)setup
-{
-    // do initialization here
-}
-
-- (void)awakeFromNib
-{
-    [self setup];
-}
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    [self setup];
-    return self;
-}
-
 @end

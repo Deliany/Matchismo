@@ -1,6 +1,6 @@
 //
 //  SetCard.m
-//  iMatch
+//  Matchismo
 //
 //  Created by Deliany Delirium on 07.02.13.
 //  Copyright (c) 2013 Clear Sky. All rights reserved.
@@ -12,14 +12,14 @@
 
 -(id)init
 {
-    return [self initWithRank:0 symbol:@"?" shading:[[self class] shadings][0] color:[[self class] colors][0]];
+    return [self initWithNumber:0 symbol:@"?" shading:[[self class] shadings][0] color:[[self class] colors][0]];
 }
 
-- (id)initWithRank:(NSUInteger)rank symbol:(NSString *)symbol shading:(NSDictionary *)shading color:(NSDictionary *)color
+- (id)initWithNumber:(NSUInteger)number symbol:(NSString *)symbol shading:(NSString *)shading color:(NSString *)color
 {
     if (self = [super init])
     {
-        _rank = rank;
+        _number = number;
         _symbol = symbol;
         _shading = shading;
         _color = color;
@@ -47,7 +47,7 @@
             if ([obj isKindOfClass:[SetCard class]])
             {
                 SetCard *card = (SetCard*)obj;
-                [bag addObject:@(card.rank)];
+                [bag addObject:@(card.number)];
                 [bag addObject:card.symbol];
                 [bag addObject:card.shading];
                 [bag addObject:card.color];
@@ -62,7 +62,7 @@
             {
                 score += 10;
             }
-            else if (itemCount == 2) // due to rules, this is not set
+            else if (itemCount == 2) // accordingly to rules, this is not set
             {
                 score = 0;
                 break;
@@ -76,9 +76,9 @@
     return score;
 }
 
-- (NSString *)rankString
+- (NSString *)numberString
 {
-    return [[self class] ranks][self.rank];
+    return [[self class] numbers][self.number];
 }
 
 - (void)setSymbol:(NSString *)symbol
@@ -89,15 +89,15 @@
     }
 }
 
-- (void)setRank:(NSUInteger)rank
+- (void)setNumber:(NSUInteger)number
 {
-    if (rank <= [[self class] maxRank])
+    if (number <= [[self class] maxNumber])
     {
-        _rank = rank;
+        _number = number;
     }
 }
 
-- (void)setShading:(NSDictionary *)shading
+- (void)setShading:(NSString *)shading
 {
     if ([[[self class] shadings] containsObject:shading])
     {
@@ -105,7 +105,7 @@
     }
 }
 
-- (void)setColor:(NSDictionary *)color
+- (void)setColor:(NSString *)color
 {
     if ([[[self class] colors] containsObject:color])
     {
@@ -117,12 +117,12 @@
 {
     static NSArray *symbols = nil;
     if (!symbols) {
-        symbols = @[@"▲",@"●",@"■"];
+        symbols = @[@"diamond",@"squiggle",@"oval"];
     }
     return symbols;
 }
 
-+ (NSArray *)ranks
++ (NSArray *)numbers
 {
     static NSArray *numbers = nil;
     if (!numbers) {
@@ -131,18 +131,16 @@
     return numbers;
 }
 
-+ (NSUInteger)maxRank
++ (NSUInteger)maxNumber
 {
-    return [[[self class] ranks] count] - 1;
+    return [[[self class] numbers] count] - 1;
 }
 
 + (NSArray *)shadings
 {
     static NSArray *shadings = nil;
     if (!shadings) {
-        shadings = @[@{NSStrokeWidthAttributeName: @0, NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)},
-                     @{NSStrokeWidthAttributeName: @5, NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)},
-                     @{NSStrokeWidthAttributeName: @2, NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)}];
+        shadings = @[@"solid",@"striped",@"open"];
     }
     return shadings;
 }
@@ -151,9 +149,7 @@
 {
     static NSArray *colors = nil;
     if (!colors) {
-        colors = @[@{NSStrokeColorAttributeName : [UIColor redColor], NSForegroundColorAttributeName : [UIColor redColor]},
-                   @{NSStrokeColorAttributeName : [UIColor greenColor], NSForegroundColorAttributeName : [UIColor greenColor]},
-                   @{NSStrokeColorAttributeName : [UIColor purpleColor], NSForegroundColorAttributeName : [UIColor purpleColor]}];
+        colors = @[@"redColor",@"greenColor",@"purpleColor"];
     }
     return colors;
 }
@@ -161,22 +157,12 @@
 - (NSString *)description
 {
     
-    return [[self attributedDescription] string];
+    return [NSString stringWithFormat:@"%@%@%@%@", self.numberString, self.symbol, self.shading, self.color];
 }
 
 - (NSAttributedString *)attributedDescription
 {
-    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] initWithDictionary:self.color];
-    [attributes addEntriesFromDictionary:self.shading];
-    
-    NSMutableString *feature = [[NSMutableString alloc] initWithCapacity:self.rank];
-    
-    for (int i = 0; i < self.rank; ++i) {
-        [feature appendString:self.symbol];
-    }
-    
-    NSMutableAttributedString *coloredFeature = [[NSMutableAttributedString alloc] initWithString:feature attributes:attributes];
-    return coloredFeature;
+    return [[NSAttributedString alloc] initWithString:[self description]];
 }
 
 @end

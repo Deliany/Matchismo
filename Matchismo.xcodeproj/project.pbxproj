@@ -79,6 +79,8 @@
 		B7C9C57616C4149C00A6AD72 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9C57516C4149C00A6AD72 /* SetCard.m */; };
 		B7E315CE16CFA6B200A5DD19 /* SettingsTabImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B7E315CD16CFA6B200A5DD19 /* SettingsTabImage.png */; };
 		B7E315D116CFA73700A5DD19 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E315D016CFA73700A5DD19 /* SettingsViewController.m */; };
+		B7FA6E1D16DA966800110EEC /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FA6E1C16DA966800110EEC /* SetCardView.m */; };
+		B7FA6E2016DA9CEB00110EEC /* SetCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FA6E1F16DA9CEB00110EEC /* SetCardCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +161,10 @@
 		B7E315CD16CFA6B200A5DD19 /* SettingsTabImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsTabImage.png; sourceTree = "<group>"; };
 		B7E315CF16CFA73700A5DD19 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		B7E315D016CFA73700A5DD19 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		B7FA6E1B16DA966800110EEC /* SetCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardView.h; sourceTree = "<group>"; };
+		B7FA6E1C16DA966800110EEC /* SetCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardView.m; sourceTree = "<group>"; };
+		B7FA6E1E16DA9CEB00110EEC /* SetCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardCollectionViewCell.h; sourceTree = "<group>"; };
+		B7FA6E1F16DA9CEB00110EEC /* SetCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,10 @@
 				B714255E16D451E60067C91C /* PlayingCardCollectionViewCell.m */,
 				B714252616D4503C0067C91C /* PlayingCardView.h */,
 				B714252716D4503C0067C91C /* PlayingCardView.m */,
+				B7FA6E1B16DA966800110EEC /* SetCardView.h */,
+				B7FA6E1C16DA966800110EEC /* SetCardView.m */,
+				B7FA6E1E16DA9CEB00110EEC /* SetCardCollectionViewCell.h */,
+				B7FA6E1F16DA9CEB00110EEC /* SetCardCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,6 +473,8 @@
 				B714252816D4503C0067C91C /* PlayingCardView.m in Sources */,
 				B714255F16D451E60067C91C /* PlayingCardCollectionViewCell.m in Sources */,
 				B714256216D454740067C91C /* PlayingCardViewController.m in Sources */,
+				B7FA6E1D16DA966800110EEC /* SetCardView.m in Sources */,
+				B7FA6E2016DA9CEB00110EEC /* SetCardCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

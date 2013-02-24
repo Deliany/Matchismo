@@ -1,6 +1,6 @@
 //
 //  SetCard.h
-//  iMatch
+//  Matchismo
 //
 //  Created by Deliany Delirium on 07.02.13.
 //  Copyright (c) 2013 Clear Sky. All rights reserved.
@@ -35,12 +35,12 @@
 /**
  * The value of number.
  **/
-@property (nonatomic) NSUInteger rank;
+@property (nonatomic) NSUInteger number;
 
 /**
  * NSString representation of number.
  **/
-@property (readonly, strong, nonatomic) NSString *rankString;
+@property (readonly, strong, nonatomic) NSString *numberString;
 
 /**
  * The value of symbol.
@@ -50,12 +50,12 @@
 /**
  * The value of shading.
  **/
-@property (strong, nonatomic) NSDictionary *shading;
+@property (strong, nonatomic) NSString *shading;
 
 /**
  * The value of color.
  **/
-@property (strong, nonatomic) NSDictionary *color;
+@property (strong, nonatomic) NSString *color;
 
 ///---------------------------------------------------------------------------------------
 /// @name Convenience Initializer
@@ -63,16 +63,16 @@
 
 /**
  * Returns a newly initialized SetGameCard object with value specified.
- * @param rank Number of set card
+ * @param number Number of set card
  * @param symbol Symbols of set card
- * @param shading Shading of set card (dictionary with attributed values)
- * @param color Color of set card (dictionary with attributed values)
+ * @param shading Shading of set card
+ * @param color Color of set card
  * @return Instantited SetCard object
  **/
-- (id)initWithRank:(NSUInteger)rank
+- (id)initWithNumber:(NSUInteger)number
               symbol:(NSString *)symbol
-             shading:(NSDictionary *)shading
-               color:(NSDictionary *)color;
+             shading:(NSString *)shading
+               color:(NSString *)color;
 
 ///---------------------------------------------------------------------------------------
 /// @name Get Valid Values
@@ -82,29 +82,29 @@
  * Gets the number of SetGameCard object
  * @return array of numbers in string representation.
  **/
-+ (NSArray *)ranks;
++ (NSArray *)numbers;
 
 /**
  * Returns max number in set card game
  * @return maximum possible number of set card
  **/
-+ (NSUInteger)maxRank;
++ (NSUInteger)maxNumber;
 
 /**
  * Gets the symbol of SetGameCard object
- * @return array of symbols in string representation.
+ * @return array of { diamond | squiggle | oval }
  **/
 + (NSArray *)symbols;
 
 /**
  * Gets the shading of SetGameCard object
- * @return array of dictionaries of possible shadings.
+ * @return array of { solid | striped | open }
  **/
 + (NSArray *)shadings;
 
 /**
  * Gets the color of SetGameCard object
- * @return array of dictionaries of possible colors.
+ * @return array of { red | green | purple }
  **/
 + (NSArray *)colors;
 

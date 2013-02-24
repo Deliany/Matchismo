@@ -1,6 +1,6 @@
 //
 //  PlayingCardViewController.m
-//  iMatch
+//  Matchismo
 //
 //  Created by Deliany Delirium on 20.02.13.
 //  Copyright (c) 2013 Clear Sky. All rights reserved.
@@ -24,7 +24,7 @@
 
 -(NSUInteger) startingCardCount
 {
-    return 20;
+    return 22;
 }
 
 -(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card animate:(BOOL)animate
@@ -53,6 +53,18 @@
             }
         }
     }
+}
+
+-(NSString *)gameName
+{
+    return @"Playing Card Game";
+}
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-card-game.jpg"]]];
+    self.numberOfCardsToMatch = 2;
 }
 
 @end

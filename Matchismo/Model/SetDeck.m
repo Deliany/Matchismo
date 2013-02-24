@@ -1,6 +1,6 @@
 //
 //  SetDeck.m
-//  iMatch
+//  Matchismo
 //
 //  Created by Deliany Delirium on 08.02.13.
 //  Copyright (c) 2013 Clear Sky. All rights reserved.
@@ -19,11 +19,11 @@
         {
             for (NSString *symbol in [SetCard symbols])
             {
-                for (NSDictionary *shading in [SetCard shadings])
+                for (NSString *shading in [SetCard shadings])
                 {
-                    for (NSDictionary *color in [SetCard colors])
+                    for (NSString *color in [SetCard colors])
                     {
-                        SetCard *card = [[SetCard alloc] initWithRank:number symbol:symbol shading:shading color:color];
+                        SetCard *card = [[SetCard alloc] initWithNumber:number symbol:symbol shading:shading color:color];
                         [self addCard:card];
                     }
                 }

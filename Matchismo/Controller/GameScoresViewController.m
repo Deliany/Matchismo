@@ -1,6 +1,6 @@
 //
 //  GameScoresViewController.m
-//  iMatch
+//  Matchismo
 //
 //  Created by Deliany Delirium on 15.02.13.
 //  Copyright (c) 2013 Clear Sky. All rights reserved.
@@ -29,7 +29,7 @@
         displayText = [displayText stringByAppendingFormat:@"%@ Score: %d ( %@ for %g sec)\n",result.gameName, result.score, formattedDate, round(result.duration)];
     }
     if([displayText length]==0){
-        displayText = @"There is no game score available! Keep playing!";
+        displayText = @"There's no Game Scores available! Keep playing!";
     }
     self.gameResultsTextView.text = displayText;
 }

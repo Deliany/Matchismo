@@ -13,7 +13,7 @@
 	<key>--project-version</key>
 	<string>1.0</string>
 	<key>--project-name</key>
-	<string>iMatch</string>
+	<string>Matchismo</string>
 	<key>--warn-undocumented-object</key>
 	<true/>
 	<key>--keep-undocumented-objects</key>
