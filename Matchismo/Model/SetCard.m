@@ -10,11 +10,6 @@
 
 @implementation SetCard
 
--(id)init
-{
-    return [self initWithNumber:0 symbol:@"?" shading:[[self class] shadings][0] color:[[self class] colors][0]];
-}
-
 - (id)initWithNumber:(NSUInteger)number symbol:(NSString *)symbol shading:(NSString *)shading color:(NSString *)color
 {
     if (self = [super init])
@@ -27,6 +22,9 @@
     
     return self;
 }
+
+#define SCORE_FOR_MATCH_UNIQUE_FEATURE 8
+#define SCORE_FOR_MATCH_COMMON_FEATURE 7
 
 - (NSInteger)match:(NSArray *)otherCards
 {
@@ -60,7 +58,7 @@
             
             if (itemCount == 1)
             {
-                score += 10;
+                score += SCORE_FOR_MATCH_UNIQUE_FEATURE;
             }
             else if (itemCount == 2) // accordingly to rules, this is not set
             {
@@ -69,7 +67,7 @@
             }
             else if (itemCount == 3)
             {
-                score += 5;
+                score += SCORE_FOR_MATCH_COMMON_FEATURE;
             }
         }
     }
@@ -163,6 +161,23 @@
 - (NSAttributedString *)attributedDescription
 {
     return [[NSAttributedString alloc] initWithString:[self description]];
+}
+
+#pragma mark -
+#pragma NSCopying protocol methods
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    SetCard *cardCopy = [[[self class] allocWithZone:zone] initWithNumber:self.number
+                                                                   symbol:[self.symbol copy]
+                                                                  shading:[self.shading copy]
+                                                                    color:[self.color copy]];
+    if (cardCopy) {
+        cardCopy.playable = self.isPlayable;
+        cardCopy.faceUp = self.isFaceUp;
+        cardCopy.lastPlayed = self.isLastPlayed;
+    }
+    return cardCopy;
 }
 
 @end

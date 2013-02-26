@@ -61,7 +61,7 @@ This is abstract class of Card in game. It can be any kind of card.</Abstract>
 			<Abstract type="html">A Boolean value that determines whether the Card object played(participated) last time in matching</Abstract>
 			<DeclaredIn>Card.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic) BOOL lastPlayed</Declaration>
+			<Declaration>@property (nonatomic, getter=isLastPlayed) BOOL lastPlayed</Declaration>
 			
 			
 			<Anchor>//api/name/lastPlayed</Anchor>
@@ -72,7 +72,7 @@ This is abstract class of Card in game. It can be any kind of card.</Abstract>
 			<Abstract type="html">A Boolean value that determines whether the Card object played(participated) last time in matching</Abstract>
 			<DeclaredIn>Card.h</DeclaredIn>			
 			
-			<Declaration>@property (nonatomic) BOOL lastPlayed</Declaration>
+			<Declaration>@property (nonatomic, getter=isLastPlayed) BOOL lastPlayed</Declaration>
 			
 			
 			<Anchor>//api/name/lastPlayed</Anchor>

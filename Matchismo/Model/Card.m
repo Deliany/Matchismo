@@ -10,24 +10,23 @@
 
 @implementation Card
 
-
--(id)init
+- (id)init
 {
     if(self = [super init])
     {
-        self.playable = YES;
-        self.faceUp = NO;
+        _playable = YES;
+        _faceUp = NO;
+        _lastPlayed = NO;
     }
     return self;
 }
 
 
--(NSInteger)match:(NSArray *)otherCards
+- (NSInteger)match:(NSArray *)otherCards
 {
     NSInteger score = 0;
     for (id obj in otherCards)
     {
-        // instrospection
         if([obj isKindOfClass:[Card class]])
         {
             Card *card = (Card*)obj;
@@ -48,6 +47,20 @@
 -(NSAttributedString *)attributedDescription
 {
     return [[NSAttributedString alloc] initWithString:[self description]];
+}
+
+#pragma mark -
+#pragma NSCopying protocol methods
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    Card *cardCopy = [[[self class] allocWithZone:zone] init];
+    if (cardCopy) {
+        cardCopy.playable = self.isPlayable;
+        cardCopy.faceUp = self.isFaceUp;
+        cardCopy.lastPlayed = self.isLastPlayed;
+    }
+    return cardCopy;
 }
 
 @end

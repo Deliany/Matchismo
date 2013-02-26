@@ -15,10 +15,6 @@
  *
  **/
 @interface Deck : NSObject
-{
-    @protected
-    NSMutableArray *_cards;
-}
 
 ///---------------------------------------------------------------------------------------
 /// @name Deck Attributes
@@ -27,7 +23,7 @@
 /**
  * A NSUInteger number of available cards in Deck object
  **/
-@property (readonly, nonatomic) NSUInteger numberOfAvailableCards;
+@property (readonly, nonatomic) NSUInteger countOfAvailableCards;
 
 ///---------------------------------------------------------------------------------------
 /// @name Add & remove cards from deck

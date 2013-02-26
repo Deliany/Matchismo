@@ -12,25 +12,25 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/Deck/setNumberOfAvailableCards:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Deck/setCountOfAvailableCards:</TokenIdentifier>
 			<Abstract type="html">A NSUInteger number of available cards in Deck object</Abstract>
 			<DeclaredIn>Deck.h</DeclaredIn>			
 			
-			<Declaration>@property (readonly, nonatomic) NSUInteger numberOfAvailableCards</Declaration>
+			<Declaration>@property (readonly, nonatomic) NSUInteger countOfAvailableCards</Declaration>
 			
 			
-			<Anchor>//api/name/numberOfAvailableCards</Anchor>
+			<Anchor>//api/name/countOfAvailableCards</Anchor>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/Deck/numberOfAvailableCards</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/Deck/countOfAvailableCards</TokenIdentifier>
 			<Abstract type="html">A NSUInteger number of available cards in Deck object</Abstract>
 			<DeclaredIn>Deck.h</DeclaredIn>			
 			
-			<Declaration>@property (readonly, nonatomic) NSUInteger numberOfAvailableCards</Declaration>
+			<Declaration>@property (readonly, nonatomic) NSUInteger countOfAvailableCards</Declaration>
 			
 			
-			<Anchor>//api/name/numberOfAvailableCards</Anchor>
+			<Anchor>//api/name/countOfAvailableCards</Anchor>
 		</Token>
 		
 		<Token>

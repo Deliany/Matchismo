@@ -13,7 +13,7 @@
  * This is abstract class of Card in game. It can be any kind of card.
  *
  **/
-@interface Card : NSObject
+@interface Card : NSObject <NSCopying>
 
 ///------------------------------------------------------------------
 /// @name Card attributes
@@ -33,7 +33,7 @@
 /**
  * A Boolean value that determines whether the Card object played(participated) last time in matching
  **/
-@property (nonatomic) BOOL lastPlayed;
+@property (nonatomic, getter = isLastPlayed) BOOL lastPlayed;
 
 ///---------------------------------------------------------------------------------------
 /// @name Comparing Card

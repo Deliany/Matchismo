@@ -22,7 +22,7 @@
     return [[PlayingCardDeck alloc] init];
 }
 
--(NSUInteger) startingCardCount
+-(NSUInteger) startingCardsCount
 {
     return 22;
 }
@@ -55,6 +55,59 @@
     }
 }
 
+- (NSArray*)updateEventMessageViewStatus:(UIView*)view withCards:(NSArray*)cards andScore:(NSInteger)score
+{
+    NSMutableArray *viewsArray = [NSMutableArray array];
+    
+    for (UIView *subView in view.subviews) {
+        [subView removeFromSuperview];
+    }
+    
+    BOOL iPad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+    
+    BOOL flippedUp;
+    CGFloat xOffset = 0;
+    for (Card *card in cards) {
+        if ([card isKindOfClass:[PlayingCard class]]) {
+            PlayingCardView *playingCardView = [[PlayingCardView alloc] initWithFrame:CGRectMake(xOffset, 0, iPad ? 50 : 35, view.bounds.size.height)];
+            playingCardView.opaque = NO;
+            [playingCardView setBackgroundColor:[UIColor clearColor]];
+            
+            PlayingCard *playingCard = (PlayingCard *)card;
+            playingCardView.rank = playingCard.rank;
+            playingCardView.suit = playingCard.suit;
+            flippedUp = playingCard.faceUp;
+            playingCardView.faceUp = YES;
+            
+            [view addSubview:playingCardView];
+            [viewsArray addObject:playingCardView];
+            xOffset += playingCardView.bounds.size.width + 10;
+        }
+    }
+    
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(xOffset, 0, view.bounds.size.width, view.bounds.size.height)];
+                                                                   
+    [textLabel setTextColor:[UIColor blackColor]];
+    [textLabel setBackgroundColor:[UIColor clearColor]];
+    [textLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 18.0f]];
+    
+    if (cards && score == 0 ) {
+        [textLabel setText:[NSString stringWithFormat:@"Flipped %@", flippedUp == YES ? @"up" : @"down"]];
+    }
+    else if (score > 0) {
+        [textLabel setText:[NSString stringWithFormat:@"Match for %d points!",score]];
+    }
+    else if (score < 0) {
+        [textLabel setText:[NSString stringWithFormat:@"Don't match! %d points penalty",score]];
+    }
+
+    if (iPad) {
+        [view addSubview:textLabel];
+        [viewsArray addObject:textLabel];
+    }
+    return viewsArray;
+}
+
 -(NSString *)gameName
 {
     return @"Playing Card Game";
@@ -64,7 +117,7 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background-card-game.jpg"]]];
-    self.numberOfCardsToMatch = 2;
+    self.countOfCardsToMatch = 2;
 }
 
 @end

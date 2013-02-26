@@ -20,31 +20,31 @@
 
 @implementation Deck
 
--(id)init
+- (NSMutableArray *)cards
 {
-    if(self = [super init])
-    {
+    if (!_cards) {
         _cards = [NSMutableArray array];
     }
     
-    return self;
+    return _cards;
 }
 
--(NSUInteger)numberOfAvailableCards
+- (NSUInteger)countOfAvailableCards
 {
     return [self.cards count];
 }
 
--(void)addCard:(Card *)card
+- (void)addCard:(Card *)card
 {
-
-    [self.cards addObject:card];
+    if (card) {
+        [self.cards addObject:card];
+    }
 }
 
--(Card *)drawRandomCard
+- (Card *)drawRandomCard
 {
     Card *drawnCard = nil;
-    if(self.numberOfAvailableCards > 0)
+    if(self.countOfAvailableCards > 0)
     {
         unsigned randPos = arc4random() % [self.cards count];
         drawnCard = self.cards[randPos];

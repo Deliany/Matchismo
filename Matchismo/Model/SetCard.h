@@ -30,7 +30,7 @@
  *  then it is not a set.
  *  @warning *Note:* Any value can passed into attributed. However, class will ignore invalid values. reccomend use convenience initializer to create SetCard object;
  **/
-@interface SetCard : Card
+@interface SetCard : Card <NSCopying>
 
 /**
  * The value of number.

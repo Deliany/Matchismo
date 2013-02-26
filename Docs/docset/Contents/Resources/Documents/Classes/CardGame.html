@@ -40,9 +40,19 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/countOfCardsInDeck">&nbsp;&nbsp;&nbsp;&nbsp;countOfCardsInDeck</option>
+	
+	<option value="//api/name/countOfCardsInGame">&nbsp;&nbsp;&nbsp;&nbsp;countOfCardsInGame</option>
+	
+	<option value="//api/name/countOfCardsToMatch">&nbsp;&nbsp;&nbsp;&nbsp;countOfCardsToMatch</option>
+	
+	<option value="//api/name/countOfUnplayableCards">&nbsp;&nbsp;&nbsp;&nbsp;countOfUnplayableCards</option>
+	
+	<option value="//api/name/flippedCardsHistoryArray">&nbsp;&nbsp;&nbsp;&nbsp;flippedCardsHistoryArray</option>
+	
 	<option value="//api/name/lastEventMessage">&nbsp;&nbsp;&nbsp;&nbsp;lastEventMessage</option>
 	
-	<option value="//api/name/numberOfCardsToMatch">&nbsp;&nbsp;&nbsp;&nbsp;numberOfCardsToMatch</option>
+	<option value="//api/name/lastMatchScore">&nbsp;&nbsp;&nbsp;&nbsp;lastMatchScore</option>
 	
 	<option value="//api/name/score">&nbsp;&nbsp;&nbsp;&nbsp;score</option>
 	
@@ -57,7 +67,11 @@
 	
 	<option value="//api/name/flipCardAtIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- flipCardAtIndex:</option>
 	
+	<option value="//api/name/increaseNumberOfCardsUpTo:">&nbsp;&nbsp;&nbsp;&nbsp;- increaseNumberOfCardsUpTo:</option>
+	
 	<option value="//api/name/initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:</option>
+	
+	<option value="//api/name/removeUnplayableCards">&nbsp;&nbsp;&nbsp;&nbsp;- removeUnplayableCards</option>
 	
 	
 	
@@ -89,9 +103,19 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countOfCardsInDeck">countOfCardsInDeck</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countOfCardsInGame">countOfCardsInGame</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countOfCardsToMatch">countOfCardsToMatch</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countOfUnplayableCards">countOfUnplayableCards</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/flippedCardsHistoryArray">flippedCardsHistoryArray</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastEventMessage">lastEventMessage</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfCardsToMatch">numberOfCardsToMatch</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastMatchScore">lastMatchScore</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/score">score</a></span></li>
 	
@@ -107,7 +131,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/flipCardAtIndex:">flipCardAtIndex:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/increaseNumberOfCardsUpTo:">increaseNumberOfCardsUpTo:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:">initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeUnplayableCards">removeUnplayableCards</a></span></li>
 	
 </ul></li>
 
@@ -165,13 +193,20 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/score">&nbsp;&nbsp;score</a></code>
-		<span class="tooltip"><p>The value of game score.</p></span>
+		<span class="tooltip"><p>Total score gained by matching cards</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/numberOfCardsToMatch">&nbsp;&nbsp;numberOfCardsToMatch</a></code>
+		<code><a href="#//api/name/lastMatchScore">&nbsp;&nbsp;lastMatchScore</a></code>
+		<span class="tooltip"><p>Score gained by last card match</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countOfCardsToMatch">&nbsp;&nbsp;countOfCardsToMatch</a></code>
 		<span class="tooltip"><p>The number of cards, needed to match at once</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
@@ -181,6 +216,34 @@
 		<code><a href="#//api/name/lastEventMessage">&nbsp;&nbsp;lastEventMessage</a></code>
 		<span class="tooltip"><p>Message that contains last playing output,
 for example which cards was matched together and for how much score they matched</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countOfCardsInGame">&nbsp;&nbsp;countOfCardsInGame</a></code>
+		<span class="tooltip"><p>Total amount of cards involved in game</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countOfCardsInDeck">&nbsp;&nbsp;countOfCardsInDeck</a></code>
+		<span class="tooltip"><p>Total amount of cards left in deck</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countOfUnplayableCards">&nbsp;&nbsp;countOfUnplayableCards</a></code>
+		<span class="tooltip"><p>Number of cards that has status playable = NO</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/flippedCardsHistoryArray">&nbsp;&nbsp;flippedCardsHistoryArray</a></code>
+		<span class="tooltip"><p>Array of arrays, each of subarray contains Card objects that participated in matching</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -221,6 +284,20 @@ for example which cards was matched together and for how much score they matched
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/increaseNumberOfCardsUpTo:">&ndash;&nbsp;increaseNumberOfCardsUpTo:</a></code>
+		<span class="tooltip"><p>Adds more cards to game from stored deck by specified amount</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeUnplayableCards">&ndash;&nbsp;removeUnplayableCards</a></code>
+		<span class="tooltip"><p>Remove all cards that is unplayable from game</p></span>
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -233,6 +310,186 @@ for example which cards was matched together and for how much score they matched
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/countOfCardsInDeck" title="countOfCardsInDeck"></a>
+	<h3 class="subsubtitle method-title">countOfCardsInDeck</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Total amount of cards left in deck</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSUInteger countOfCardsInDeck</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countOfCardsInGame" title="countOfCardsInGame"></a>
+	<h3 class="subsubtitle method-title">countOfCardsInGame</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Total amount of cards involved in game</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSUInteger countOfCardsInGame</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countOfCardsToMatch" title="countOfCardsToMatch"></a>
+	<h3 class="subsubtitle method-title">countOfCardsToMatch</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The number of cards, needed to match at once</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger countOfCardsToMatch</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countOfUnplayableCards" title="countOfUnplayableCards"></a>
+	<h3 class="subsubtitle method-title">countOfUnplayableCards</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Number of cards that has status playable = NO</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSUInteger countOfUnplayableCards</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/flippedCardsHistoryArray" title="flippedCardsHistoryArray"></a>
+	<h3 class="subsubtitle method-title">flippedCardsHistoryArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Array of arrays, each of subarray contains Card objects that participated in matching</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, strong, nonatomic) NSMutableArray *flippedCardsHistoryArray</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/lastEventMessage" title="lastEventMessage"></a>
@@ -272,18 +529,18 @@ for example which cards was matched together and for how much score they matched
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/numberOfCardsToMatch" title="numberOfCardsToMatch"></a>
-	<h3 class="subsubtitle method-title">numberOfCardsToMatch</h3>
+	<a name="//api/name/lastMatchScore" title="lastMatchScore"></a>
+	<h3 class="subsubtitle method-title">lastMatchScore</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The number of cards, needed to match at once</p>
+		<p>Score gained by last card match</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic) NSUInteger numberOfCardsToMatch</code></div>
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSInteger lastMatchScore</code></div>
 
     
 	
@@ -314,7 +571,7 @@ for example which cards was matched together and for how much score they matched
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The value of game score.</p>
+		<p>Total score gained by matching cards</p>
 	</div>		
 	
     
@@ -451,6 +708,52 @@ for example which cards was matched together and for how much score they matched
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/increaseNumberOfCardsUpTo:" title="increaseNumberOfCardsUpTo:"></a>
+	<h3 class="subsubtitle method-title">increaseNumberOfCardsUpTo:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds more cards to game from stored deck by specified amount</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)increaseNumberOfCardsUpTo:(NSUInteger)<em>numberOfCards</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>numberOfCards</em></dt>
+			<dd><p>Number of cards that will be added to game</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:" title="initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:"></a>
 	<h3 class="subsubtitle method-title">initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:</h3>
 	
@@ -462,7 +765,7 @@ for example which cards was matched together and for how much score they matched
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithNumberOfCards:(NSUInteger)<em>numOfCards</em> fromCardDeck:(Deck *)<em>deck</em> andNumberOfCardsToMatch:(NSUInteger)<em>numberOfCards</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithNumberOfCards:(NSUInteger)<em>numOfCards</em> fromCardDeck:(Deck *)<em>deck</em> andNumberOfCardsToMatch:(NSUInteger)<em>numOfCardsToMatch</em></code></div>
 
     
 	
@@ -480,7 +783,7 @@ for example which cards was matched together and for how much score they matched
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>numberOfCards</em></dt>
+			<dt><em>numOfCardsToMatch</em></dt>
 			<dd><p>Accordingly to rules, this number will be used to validate whether cards is ready to match or not</p></dd>
 		</dl>
 		
@@ -491,6 +794,47 @@ for example which cards was matched together and for how much score they matched
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
 		<p>Instantiated CardGame object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeUnplayableCards" title="removeUnplayableCards"></a>
+	<h3 class="subsubtitle method-title">removeUnplayableCards</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove all cards that is unplayable from game</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)removeUnplayableCards</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>index path of removed cards</p>
 	</div>
 	
 	
@@ -524,7 +868,7 @@ for example which cards was matched together and for how much score they matched
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Deliany Production. All rights reserved. (Last updated: 2013-02-24)</span><br />
+						<p><span class="copyright">&copy; 2013 Deliany Production. All rights reserved. (Last updated: 2013-02-26)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 858)</a>.</span></p>
 						

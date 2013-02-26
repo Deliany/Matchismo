@@ -10,11 +10,6 @@
 
 @implementation PlayingCard
 
--(id)init
-{    
-    return [self initWithSuit:@"?" andRank:0];
-}
-
 - (id)initWithSuit:(NSString *)suit andRank:(NSUInteger)rank
 {
     if (self = [super init])
@@ -25,7 +20,7 @@
     return self;
 }
 
--(void)setRank:(NSUInteger)rank
+- (void)setRank:(NSUInteger)rank
 {
     if(rank <= [[self class] maxRank])
     {
@@ -33,36 +28,43 @@
     }
 }
 
--(void)setSuit:(NSString *)suit
+- (void)setSuit:(NSString *)suit
 {
     if ([[[self class] suits] containsObject:suit]) {
         _suit = suit;
     }
 }
 
--(NSString *)description
+- (NSString *)description
 {
     NSString *stringRank = [[self class] ranks][self.rank];
     return [NSString stringWithFormat:@"%@%@", stringRank, self.suit];
 }
 
--(NSInteger)match:(NSArray *)otherCards
+#define SCORE_FOR_MATCHED_SUIT 4
+#define MULTIPLIER_FOR_MATCHED_RANK 2.5
+
+- (NSInteger)match:(NSArray *)otherCards
 {
     NSInteger score = 0;
     for (id obj in otherCards)
     {
-        // introspection
         if ([obj isKindOfClass:[PlayingCard class]])
         {
             PlayingCard *card = (PlayingCard*)obj;
             if([card.suit isEqualToString:self.suit])
             {
-                score += 4;
+                score += SCORE_FOR_MATCHED_SUIT;
             }
             else if (card.rank == self.rank)
             {
                 // rank = 1 for "2", rank = 2 for "3" and so on
-                score += (self.rank + 1);
+                score += self.rank * MULTIPLIER_FOR_MATCHED_RANK;
+            }
+            else
+            {
+                score = 0;
+                break;
             }
         }
     }
@@ -91,6 +93,20 @@
         suits = @[@"♠",@"♣",@"♥",@"♦"];
     }
     return suits;
+}
+
+#pragma mark -
+#pragma NSCopying protocol methods
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    PlayingCard *cardCopy = [[[self class] allocWithZone:zone] initWithSuit:[self.suit copy] andRank:self.rank];
+    if (cardCopy) {
+        cardCopy.playable = self.isPlayable;
+        cardCopy.faceUp = self.isFaceUp;
+        cardCopy.lastPlayed = self.isLastPlayed;
+    }
+    return cardCopy;
 }
 
 @end

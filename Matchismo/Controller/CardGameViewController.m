@@ -7,6 +7,7 @@
 //
 
 #import "CardGameViewController.h"
+#import "SetCardGameViewController.h"
 #import "CardGame.h"
 #import "PlayingCard.h"
 #import "GameResult.h"
@@ -16,10 +17,10 @@
 // UI outlets
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *eventMessageLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *gameTypeSegmentControl;
 @property (weak, nonatomic) IBOutlet UISlider *eventMessagesSlider;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
+@property (weak, nonatomic) IBOutlet UIView *eventMessageView;
 
 // other properties
 @property (strong, nonatomic) NSMutableArray *eventMessages;
@@ -53,6 +54,11 @@
     // abstract
 }
 
+-(NSArray*)updateEventMessageViewStatus:(UIView*)view withCards:(NSArray*)cards andScore:(NSInteger)score
+{
+    return nil; // abstract
+}
+
 
 #pragma mark -
 #pragma Properties getters or setters
@@ -60,7 +66,7 @@
 - (CardGame *)game
 {
     if (!_game) {
-        _game = [[CardGame alloc] initWithNumberOfCards:self.startingCardCount fromCardDeck:[self createDeck] andNumberOfCardsToMatch:self.numberOfCardsToMatch];
+        _game = [[CardGame alloc] initWithNumberOfCards:self.startingCardsCount fromCardDeck:[self createDeck] andNumberOfCardsToMatch:self.countOfCardsToMatch];
     }
     return _game;
 }
@@ -88,10 +94,10 @@
 }
 
 
-- (void) setNumberOfCardsToMatch:(NSUInteger)numberOfCardsToMatch
+- (void) setCountOfCardsToMatch:(NSUInteger)numberOfCardsToMatch
 {
-    _numberOfCardsToMatch = numberOfCardsToMatch;
-    self.game.numberOfCardsToMatch = _numberOfCardsToMatch;
+    _countOfCardsToMatch = numberOfCardsToMatch;
+    self.game.countOfCardsToMatch = _countOfCardsToMatch;
 }
 
 
@@ -101,7 +107,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
-    return self.startingCardCount;
+    return [self.game countOfCardsInGame];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -125,6 +131,11 @@
         self.flipsCount++;
         self.gameTypeSegmentControl.enabled = NO;
         [self.game flipCardAtIndex:indexPath.item];
+        
+        if (self.game.countOfUnplayableCards > 0 && [self isKindOfClass:[SetCardGameViewController class]])
+        {
+            [self.cardCollectionView deleteItemsAtIndexPaths:[self.game removeUnplayableCards]];
+        }
         [self updateUI];
     }
 
@@ -135,13 +146,12 @@
     [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.game.score]];
     self.gameResult.score = self.game.score;
     
-    [self.eventMessages addObject:self.game.lastEventMessage];
+    NSArray *viewsArray = [self updateEventMessageViewStatus:self.eventMessageView withCards:[self.game.flippedCardsHistoryArray lastObject] andScore:self.game.lastMatchScore];
+    
+    [self.eventMessages addObject:viewsArray];//self.game.lastEventMessage];
     
     self.eventMessagesSlider.maximumValue = [self.eventMessages count];
     self.eventMessagesSlider.value = self.eventMessagesSlider.maximumValue;
-    
-    [self.eventMessageLabel setAttributedText:self.game.lastEventMessage];
-    [self.eventMessageLabel setAlpha:1];
     
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells])
     {
@@ -157,14 +167,39 @@
     NSUInteger pos = (int)self.eventMessagesSlider.value;
     if(pos < [self.eventMessages count])
     {
-        [self.eventMessageLabel setAttributedText:self.eventMessages[pos]];
-        [self.eventMessageLabel setAlpha:0.5];
+        for (UIView *subView in self.eventMessageView.subviews) {
+            [subView removeFromSuperview];
+        }
+        for (UIView* subView in self.eventMessages[pos]) {
+            [subView setAlpha:0.5];
+            [self.eventMessageView addSubview:subView];
+        }
     }
 }
 
 - (IBAction)gameTypeClick
 {
-    self.numberOfCardsToMatch = self.gameTypeSegmentControl.selectedSegmentIndex + 2;
+    self.countOfCardsToMatch = self.gameTypeSegmentControl.selectedSegmentIndex + 2;
+}
+
+- (IBAction)requestMoreCardsClick
+{
+    if ([self.game countOfCardsInDeck] > 0) {
+        [self.game increaseNumberOfCardsUpTo:3];
+        [self.cardCollectionView reloadData];
+        
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:self.game.countOfCardsInGame - 1 inSection:0];
+        [self.cardCollectionView scrollToItemAtIndexPath:scrollIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Empty deck"
+                                                        message:@"Deck is empty, you cannot request more cards from it"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+
+    }
 }
 
 - (IBAction)dealClick
@@ -191,11 +226,6 @@
 	{
         [self restartGame];
 	}
-	else if ([title isEqualToString:@"Cancel"])
-	{
-        // do nothing
-        
-	}
 }
 
 - (void)restartGame
@@ -208,6 +238,7 @@
     self.gameTypeSegmentControl.enabled = true;
     
     [self.eventMessages removeAllObjects];
+    [self.cardCollectionView reloadData];
     [self updateUI];
 }
 

@@ -66,13 +66,14 @@
 		B74C3B9E16BDA86B00D36C7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B74C3B9C16BDA86B00D36C7A /* InfoPlist.strings */; };
 		B74C3BA016BDA86B00D36C7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B74C3B9F16BDA86B00D36C7A /* main.m */; };
 		B74C3BA416BDA86B00D36C7A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B74C3BA316BDA86B00D36C7A /* AppDelegate.m */; };
-		B74C3BAD16BDA86B00D36C7A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74C3BAB16BDA86B00D36C7A /* MainStoryboard.storyboard */; };
+		B74C3BAD16BDA86B00D36C7A /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74C3BAB16BDA86B00D36C7A /* iPad.storyboard */; };
 		B74C3BBD16BDA99F00D36C7A /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = B74C3BBC16BDA99F00D36C7A /* Card.m */; };
 		B74C3BC016BDAB2500D36C7A /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B74C3BBF16BDAB2500D36C7A /* PlayingCard.m */; };
 		B74C3BC616BDB89D00D36C7A /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = B74C3BC516BDB89D00D36C7A /* PlayingCardDeck.m */; };
 		B76445ED16C5495D00433E37 /* SetDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = B76445EC16C5495D00433E37 /* SetDeck.m */; };
 		B76445F816C57B8400433E37 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76445F716C57B8300433E37 /* QuartzCore.framework */; };
 		B76A52D916BE7136004B316E /* CardGame.m in Sources */ = {isa = PBXBuildFile; fileRef = B76A52D816BE7136004B316E /* CardGame.m */; };
+		B7814DBA16DC2504001589DB /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7814DB916DC2504001589DB /* iPhone.storyboard */; };
 		B7A383A916D16BE200B2BB10 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7A383A816D16BE200B2BB10 /* AppledocSettings.plist */; };
 		B7C9085616D43B9400C45795 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C9085516D43B9400C45795 /* cardback.png */; };
 		B7C9C56A16C3F58E00A6AD72 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9C56916C3F58E00A6AD72 /* Deck.m */; };
@@ -140,7 +141,7 @@
 		B74C3BA116BDA86B00D36C7A /* Matchismo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Matchismo-Prefix.pch"; sourceTree = "<group>"; };
 		B74C3BA216BDA86B00D36C7A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B74C3BA316BDA86B00D36C7A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B74C3BAC16BDA86B00D36C7A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		B74C3BAC16BDA86B00D36C7A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		B74C3BBB16BDA99F00D36C7A /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
 		B74C3BBC16BDA99F00D36C7A /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
 		B74C3BBE16BDAB2500D36C7A /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCard.h; path = Model/PlayingCard.h; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		B76445F716C57B8300433E37 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B76A52D716BE7136004B316E /* CardGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardGame.h; path = Model/CardGame.h; sourceTree = "<group>"; };
 		B76A52D816BE7136004B316E /* CardGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardGame.m; path = Model/CardGame.m; sourceTree = "<group>"; };
+		B7814DB916DC2504001589DB /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		B7A383A816D16BE200B2BB10 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		B7C9085516D43B9400C45795 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
 		B7C9C56816C3F58E00A6AD72 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = Model/Deck.h; sourceTree = "<group>"; };
@@ -298,7 +300,8 @@
 				B71E52B016CE3ABF0086DB40 /* Controller */,
 				B714252516D4503C0067C91C /* Views */,
 				B71E52B516CE3ABF0086DB40 /* Design */,
-				B74C3BAB16BDA86B00D36C7A /* MainStoryboard.storyboard */,
+				B74C3BAB16BDA86B00D36C7A /* iPad.storyboard */,
+				B7814DB916DC2504001589DB /* iPhone.storyboard */,
 				B74C3B9A16BDA86B00D36C7A /* Supporting Files */,
 			);
 			path = Matchismo;
@@ -394,7 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74C3B9E16BDA86B00D36C7A /* InfoPlist.strings in Resources */,
-				B74C3BAD16BDA86B00D36C7A /* MainStoryboard.storyboard in Resources */,
+				B74C3BAD16BDA86B00D36C7A /* iPad.storyboard in Resources */,
 				B71E52C116CE3ABF0086DB40 /* background-card-game.jpg in Resources */,
 				B71E52C216CE3ABF0086DB40 /* background-set-game.jpg in Resources */,
 				B71E52C416CE3ABF0086DB40 /* CardGameTabImage.png in Resources */,
@@ -430,6 +433,7 @@
 				B714255716D450730067C91C /* Q♥@2x.png in Resources */,
 				B714255816D450730067C91C /* Q♦.png in Resources */,
 				B714255916D450730067C91C /* Q♦@2x.png in Resources */,
+				B7814DBA16DC2504001589DB /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,12 +493,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		B74C3BAB16BDA86B00D36C7A /* MainStoryboard.storyboard */ = {
+		B74C3BAB16BDA86B00D36C7A /* iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B74C3BAC16BDA86B00D36C7A /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -565,6 +569,7 @@
 				GCC_PREFIX_HEADER = "Matchismo/Matchismo-Prefix.pch";
 				INFOPLIST_FILE = "Matchismo/Matchismo-Info.plist";
 				PRODUCT_NAME = Matchismo;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -576,6 +581,7 @@
 				GCC_PREFIX_HEADER = "Matchismo/Matchismo-Prefix.pch";
 				INFOPLIST_FILE = "Matchismo/Matchismo-Info.plist";
 				PRODUCT_NAME = Matchismo;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
