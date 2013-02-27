@@ -22,9 +22,11 @@
     return [[PlayingCardDeck alloc] init];
 }
 
+#define PLAYING_CARDS_AMOUNT_KEY @"Playing_cards_amount"
+
 -(NSUInteger) startingCardsCount
 {
-    return 22;
+    return [[NSUserDefaults standardUserDefaults] integerForKey:PLAYING_CARDS_AMOUNT_KEY];
 }
 
 -(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card animate:(BOOL)animate

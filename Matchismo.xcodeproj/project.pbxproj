@@ -74,12 +74,12 @@
 		B76445F816C57B8400433E37 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76445F716C57B8300433E37 /* QuartzCore.framework */; };
 		B76A52D916BE7136004B316E /* CardGame.m in Sources */ = {isa = PBXBuildFile; fileRef = B76A52D816BE7136004B316E /* CardGame.m */; };
 		B7814DBA16DC2504001589DB /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7814DB916DC2504001589DB /* iPhone.storyboard */; };
+		B79B57D916DD7C33005BC034 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B79B57D816DD7C33005BC034 /* SettingsTableViewController.m */; };
 		B7A383A916D16BE200B2BB10 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7A383A816D16BE200B2BB10 /* AppledocSettings.plist */; };
 		B7C9085616D43B9400C45795 /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = B7C9085516D43B9400C45795 /* cardback.png */; };
 		B7C9C56A16C3F58E00A6AD72 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9C56916C3F58E00A6AD72 /* Deck.m */; };
 		B7C9C57616C4149C00A6AD72 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9C57516C4149C00A6AD72 /* SetCard.m */; };
 		B7E315CE16CFA6B200A5DD19 /* SettingsTabImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B7E315CD16CFA6B200A5DD19 /* SettingsTabImage.png */; };
-		B7E315D116CFA73700A5DD19 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E315D016CFA73700A5DD19 /* SettingsViewController.m */; };
 		B7FA6E1D16DA966800110EEC /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FA6E1C16DA966800110EEC /* SetCardView.m */; };
 		B7FA6E2016DA9CEB00110EEC /* SetCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FA6E1F16DA9CEB00110EEC /* SetCardCollectionViewCell.m */; };
 /* End PBXBuildFile section */
@@ -154,6 +154,8 @@
 		B76A52D716BE7136004B316E /* CardGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardGame.h; path = Model/CardGame.h; sourceTree = "<group>"; };
 		B76A52D816BE7136004B316E /* CardGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardGame.m; path = Model/CardGame.m; sourceTree = "<group>"; };
 		B7814DB916DC2504001589DB /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		B79B57D716DD7C33005BC034 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		B79B57D816DD7C33005BC034 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		B7A383A816D16BE200B2BB10 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
 		B7C9085516D43B9400C45795 /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
 		B7C9C56816C3F58E00A6AD72 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = Model/Deck.h; sourceTree = "<group>"; };
@@ -161,8 +163,6 @@
 		B7C9C57416C4149C00A6AD72 /* SetCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCard.h; path = Model/SetCard.h; sourceTree = "<group>"; };
 		B7C9C57516C4149C00A6AD72 /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCard.m; path = Model/SetCard.m; sourceTree = "<group>"; };
 		B7E315CD16CFA6B200A5DD19 /* SettingsTabImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsTabImage.png; sourceTree = "<group>"; };
-		B7E315CF16CFA73700A5DD19 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		B7E315D016CFA73700A5DD19 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		B7FA6E1B16DA966800110EEC /* SetCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardView.h; sourceTree = "<group>"; };
 		B7FA6E1C16DA966800110EEC /* SetCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardView.m; sourceTree = "<group>"; };
 		B7FA6E1E16DA9CEB00110EEC /* SetCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardCollectionViewCell.h; sourceTree = "<group>"; };
@@ -241,8 +241,8 @@
 				B71E52B416CE3ABF0086DB40 /* SetCardGameViewController.m */,
 				B71E52CD16CE47080086DB40 /* GameScoresViewController.h */,
 				B71E52CE16CE47080086DB40 /* GameScoresViewController.m */,
-				B7E315CF16CFA73700A5DD19 /* SettingsViewController.h */,
-				B7E315D016CFA73700A5DD19 /* SettingsViewController.m */,
+				B79B57D716DD7C33005BC034 /* SettingsTableViewController.h */,
+				B79B57D816DD7C33005BC034 /* SettingsTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -473,12 +473,12 @@
 				B71E52C016CE3ABF0086DB40 /* SetCardGameViewController.m in Sources */,
 				B71E52CC16CE3C570086DB40 /* GameResult.m in Sources */,
 				B71E52CF16CE47080086DB40 /* GameScoresViewController.m in Sources */,
-				B7E315D116CFA73700A5DD19 /* SettingsViewController.m in Sources */,
 				B714252816D4503C0067C91C /* PlayingCardView.m in Sources */,
 				B714255F16D451E60067C91C /* PlayingCardCollectionViewCell.m in Sources */,
 				B714256216D454740067C91C /* PlayingCardViewController.m in Sources */,
 				B7FA6E1D16DA966800110EEC /* SetCardView.m in Sources */,
 				B7FA6E2016DA9CEB00110EEC /* SetCardCollectionViewCell.m in Sources */,
+				B79B57D916DD7C33005BC034 /* SettingsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

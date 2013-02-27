@@ -50,11 +50,11 @@
     {
         if([plist isKindOfClass:[NSDictionary class]])
         {
-            NSDictionary *resultDictionaray = (NSDictionary *)plist;
-            _start = resultDictionaray[START_KEY];
-            _end = resultDictionaray[END_KEY];
-            _score = [resultDictionaray[SCORE_KEY] intValue];
-            _gameName = resultDictionaray[GAME_NAME_KEY];
+            NSDictionary *resultDictionary = (NSDictionary *)plist;
+            _start = resultDictionary[START_KEY];
+            _end = resultDictionary[END_KEY];
+            _score = [resultDictionary[SCORE_KEY] intValue];
+            _gameName = resultDictionary[GAME_NAME_KEY];
         }
     }
     return self;

@@ -11,7 +11,7 @@
 
 @implementation PlayingCardDeck
 
--(id)init
+- (id)init
 {
     if (self = [super init])
     {
@@ -27,6 +27,11 @@
     }
     
     return self;
+}
+
++ (NSUInteger)maxCardsAmount
+{
+    return [[PlayingCard suits] count] * [PlayingCard maxRank];
 }
 
 @end

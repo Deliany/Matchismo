@@ -14,4 +14,9 @@
  **/
 @interface PlayingCardDeck : Deck
 
+/** 
+ * How many cards could possibly be in Deck
+ **/
++ (NSUInteger)maxCardsAmount;
+
 @end

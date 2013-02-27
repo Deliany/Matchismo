@@ -168,7 +168,7 @@
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="WuH-EY-u6q"/>
                         <segue destination="kg1-8H-IG6" kind="relationship" relationship="viewControllers" id="tEo-b8-HEt"/>
                         <segue destination="Q6f-To-RAu" kind="relationship" relationship="viewControllers" id="LMG-LD-uxg"/>
-                        <segue destination="3kc-VD-5m9" kind="relationship" relationship="viewControllers" id="DiW-I8-xIL"/>
+                        <segue destination="3fq-Lm-tEb" kind="relationship" relationship="viewControllers" id="pTz-c9-56m"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="221-FY-fNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,39 +207,70 @@
             </objects>
             <point key="canvasLocation" x="-795" y="1577"/>
         </scene>
-        <!--Settings View Controller - Settings-->
-        <scene sceneID="xYW-ZY-Y1p">
+        <!--Settings Table View Controller - Settings-->
+        <scene sceneID="EBL-ga-T0J">
             <objects>
-                <viewController id="3kc-VD-5m9" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EUf-0N-Qca">
+                <tableViewController id="3fq-Lm-tEb" customClass="SettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Mt5-rY-QLL">
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkT-sn-bhS">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <state key="normal" title="Clear all game scores">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clearLabelClick" destination="3kc-VD-5m9" eventType="touchUpInside" id="diW-0J-35G"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.25780702059999999" green="0.62103396050000004" blue="0.2453413954" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="EkT-sn-bhS" firstAttribute="centerX" secondItem="EUf-0N-Qca" secondAttribute="centerX" type="default" id="XPR-AT-tbA"/>
-                            <constraint firstItem="EkT-sn-bhS" firstAttribute="centerY" secondItem="EUf-0N-Qca" secondAttribute="centerY" type="default" id="nkA-nJ-xhD"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsTabImage.png" id="T7f-rW-GT0"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-qi-TLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="JH4-G2-dbt">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1kx-qK-eL9" style="IBUITableViewCellStyleDefault" id="7TG-Sc-efG">
+                                        <rect key="frame" x="0.0" y="30" width="768" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="45" y="1" width="645" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Clear all game scores" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kx-qK-eL9">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="kyq-PE-ELR" detailTextLabel="OLB-cP-85p" style="IBUITableViewCellStyleValue1" id="D7e-GT-pB2">
+                                        <rect key="frame" x="0.0" y="75" width="768" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="45" y="0.0" width="658" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Amount of dealed Playing Cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyq-PE-ELR">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="22" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLB-cP-85p">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="3fq-Lm-tEb" id="dyc-jm-bVC"/>
+                            <outlet property="delegate" destination="3fq-Lm-tEb" id="LfO-Yy-Iex"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsTabImage.png" id="eFf-et-VDu"/>
+                    <connections>
+                        <outlet property="countOfDealedCardsLabel" destination="OLB-cP-85p" id="0ZU-A8-QAB"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7i-OH-w1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-795" y="2727"/>
+            <point key="canvasLocation" x="-888" y="2805"/>
         </scene>
         <!--Playing Card View Controller - Card Game-->
         <scene sceneID="4">
@@ -397,7 +428,6 @@
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="flipCardClick:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="eventMessageView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventMessagesSlider" candidateClass="UISlider"/>
@@ -439,8 +469,11 @@
         <class className="SetCardView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardView.h"/>
         </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="countOfDealedCardsLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
@@ -450,9 +483,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
