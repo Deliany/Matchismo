@@ -169,7 +169,7 @@ for example which cards was matched together and for how much score they matched
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/CardGame/setFlippedCardsHistoryArray:</TokenIdentifier>
-			<Abstract type="html">Array of arrays, each of subarray contains Card objects that participated in matching</Abstract>
+			<Abstract type="html">An array of arrays, each of subarray contains Card objects that participated in matching</Abstract>
 			<DeclaredIn>CardGame.h</DeclaredIn>			
 			
 			<Declaration>@property (readonly, strong, nonatomic) NSMutableArray *flippedCardsHistoryArray</Declaration>
@@ -180,13 +180,35 @@ for example which cards was matched together and for how much score they matched
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instp/CardGame/flippedCardsHistoryArray</TokenIdentifier>
-			<Abstract type="html">Array of arrays, each of subarray contains Card objects that participated in matching</Abstract>
+			<Abstract type="html">An array of arrays, each of subarray contains Card objects that participated in matching</Abstract>
 			<DeclaredIn>CardGame.h</DeclaredIn>			
 			
 			<Declaration>@property (readonly, strong, nonatomic) NSMutableArray *flippedCardsHistoryArray</Declaration>
 			
 			
 			<Anchor>//api/name/flippedCardsHistoryArray</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/setMatchedCardsArray:</TokenIdentifier>
+			<Abstract type="html">An array of already matched cards</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSMutableArray *matchedCardsArray</Declaration>
+			
+			
+			<Anchor>//api/name/matchedCardsArray</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/CardGame/matchedCardsArray</TokenIdentifier>
+			<Abstract type="html">An array of already matched cards</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>@property (readonly, strong, nonatomic) NSMutableArray *matchedCardsArray</Declaration>
+			
+			
+			<Anchor>//api/name/matchedCardsArray</Anchor>
 		</Token>
 		
 		<Token>

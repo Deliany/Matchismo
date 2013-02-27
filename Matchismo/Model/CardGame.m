@@ -18,6 +18,7 @@
 @property (readwrite, nonatomic) NSInteger lastMatchScore;
 @property (readwrite, strong, nonatomic) NSAttributedString *lastEventMessage;
 @property (readwrite, strong, nonatomic) NSMutableArray *flippedCardsHistoryArray;
+@property (readwrite, strong, nonatomic) NSMutableArray *matchedCardsArray;
 
 @end
 
@@ -37,6 +38,7 @@
         _cards = [NSMutableArray arrayWithCapacity:numOfCards];
         _lastEventMessage = [[NSAttributedString alloc] initWithString:@""];
         _flippedCardsHistoryArray = [NSMutableArray array];
+        _matchedCardsArray = [NSMutableArray array];
         
         _countOfCardsToMatch = numOfCardsToMatch;
         
@@ -137,8 +139,10 @@
         
         for (Card* card in cardsToMatch) {
             card.playable = NO;
+            [self.matchedCardsArray addObject:[card copy]];
         }
         card.playable = NO;
+        [self.matchedCardsArray addObject:[card copy]];
         self.score += matchScore;
         
         NSMutableAttributedString *msg = [[NSMutableAttributedString alloc] initWithAttributedString:cardsContents];

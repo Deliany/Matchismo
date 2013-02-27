@@ -104,19 +104,63 @@
 #pragma mark -
 #pragma UICollectionViewDataSource methods
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 2;
+}
+
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
-    return [self.game countOfCardsInGame];
+    switch (section) {
+        case 0:
+            return [self.game countOfCardsInGame];
+            break;
+            
+        case 1:
+            return [[self.game matchedCardsArray] count];
+            break;
+            
+        default:
+            return 0;
+            break;
+    }
+    
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
-    Card *card = [self.game cardAtIndex:indexPath.item];
+    Card *card;
+    switch (indexPath.section) {
+        case 0:
+            card = [self.game cardAtIndex:indexPath.row];
+            break;
+            
+        case 1:
+            card = [self.game matchedCardsArray][indexPath.row];
+        default:
+            break;
+    }
+   
     [self updateCell:cell usingCard:card animate:NO];
     return cell;
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+          viewForSupplementaryElementOfKind:(NSString *)kind
+                                atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"SectionHeader" forIndexPath:indexPath];
+    for (UIView* subView in view.subviews) {
+        if ([subView isKindOfClass:[UILabel class]]) {
+            UILabel *sectionHeaderLabel = (UILabel*)subView;
+            sectionHeaderLabel.text = indexPath.section == 0 ? @"Playing cards" : @"Matched cards";
+        }
+    }
+    
+    return view;
 }
 
 
@@ -134,7 +178,9 @@
         
         if (self.game.countOfUnplayableCards > 0 && [self isKindOfClass:[SetCardGameViewController class]])
         {
-            [self.cardCollectionView deleteItemsAtIndexPaths:[self.game removeUnplayableCards]];
+            [self.game removeUnplayableCards];
+            [self.cardCollectionView reloadData];
+            
         }
         [self updateUI];
     }

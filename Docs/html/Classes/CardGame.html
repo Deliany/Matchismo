@@ -54,6 +54,8 @@
 	
 	<option value="//api/name/lastMatchScore">&nbsp;&nbsp;&nbsp;&nbsp;lastMatchScore</option>
 	
+	<option value="//api/name/matchedCardsArray">&nbsp;&nbsp;&nbsp;&nbsp;matchedCardsArray</option>
+	
 	<option value="//api/name/score">&nbsp;&nbsp;&nbsp;&nbsp;score</option>
 	
 	
@@ -116,6 +118,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastEventMessage">lastEventMessage</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lastMatchScore">lastMatchScore</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/matchedCardsArray">matchedCardsArray</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/score">score</a></span></li>
 	
@@ -243,7 +247,14 @@ for example which cards was matched together and for how much score they matched
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/flippedCardsHistoryArray">&nbsp;&nbsp;flippedCardsHistoryArray</a></code>
-		<span class="tooltip"><p>Array of arrays, each of subarray contains Card objects that participated in matching</p></span>
+		<span class="tooltip"><p>An array of arrays, each of subarray contains Card objects that participated in matching</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/matchedCardsArray">&nbsp;&nbsp;matchedCardsArray</a></code>
+		<span class="tooltip"><p>An array of already matched cards</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -462,7 +473,7 @@ for example which cards was matched together and for how much score they matched
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Array of arrays, each of subarray contains Card objects that participated in matching</p>
+		<p>An array of arrays, each of subarray contains Card objects that participated in matching</p>
 	</div>		
 	
     
@@ -541,6 +552,42 @@ for example which cards was matched together and for how much score they matched
     
 
 	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSInteger lastMatchScore</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/matchedCardsArray" title="matchedCardsArray"></a>
+	<h3 class="subsubtitle method-title">matchedCardsArray</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An array of already matched cards</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, strong, nonatomic) NSMutableArray *matchedCardsArray</code></div>
 
     
 	

@@ -72,9 +72,9 @@
 
 - (void) showEditAlert
 {
-    NSString *message = [NSString stringWithFormat:@"Please, enter new amount of dealed cards"];
+    NSString *message = [NSString stringWithFormat:@"Please, enter new amount playing cards"];
     
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Number of dealed cards"
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Number of playing cards"
                                                      message:message
                                                     delegate:self
                                            cancelButtonTitle:@"Confirm"

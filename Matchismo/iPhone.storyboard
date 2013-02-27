@@ -62,7 +62,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="6wY-5c-iTv" firstAttribute="top" secondItem="Q5r-2q-66P" secondAttribute="top" type="default" id="0Oj-Gz-rlb"/>
                                     <constraint firstItem="src-Wr-nK6" firstAttribute="centerY" secondItem="reF-bc-ysJ" secondAttribute="centerY" type="default" id="0bB-lV-Imn"/>
                                     <constraint firstItem="6wY-5c-iTv" firstAttribute="leading" secondItem="Q5r-2q-66P" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1tV-hB-mOQ"/>
                                     <constraint firstItem="src-Wr-nK6" firstAttribute="leading" secondItem="Q5r-2q-66P" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5fv-zs-vnE"/>
@@ -72,10 +71,10 @@
                                     <constraint firstItem="UXU-JP-Wvp" firstAttribute="leading" secondItem="mNP-MR-bpK" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="CmN-YP-4vq"/>
                                     <constraint firstAttribute="height" constant="100" type="user" id="Hbv-0N-tW0"/>
                                     <constraint firstItem="reF-bc-ysJ" firstAttribute="top" secondItem="Q5r-2q-66P" secondAttribute="top" constant="49" id="TDc-RB-hv5"/>
-                                    <constraint firstItem="UXU-JP-Wvp" firstAttribute="top" secondItem="Q5r-2q-66P" secondAttribute="top" type="user" id="Tbn-jN-3RK"/>
                                     <constraint firstItem="reF-bc-ysJ" firstAttribute="leading" secondItem="src-Wr-nK6" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="WLw-V8-IOw"/>
                                     <constraint firstAttribute="bottom" secondItem="6RH-mC-vdF" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="aRk-gY-ryU"/>
                                     <constraint firstItem="6RH-mC-vdF" firstAttribute="leading" secondItem="reF-bc-ysJ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="eyx-fe-3oC"/>
+                                    <constraint firstItem="6wY-5c-iTv" firstAttribute="top" secondItem="Q5r-2q-66P" secondAttribute="top" constant="-1" id="kVN-32-7jN"/>
                                     <constraint firstItem="mNP-MR-bpK" firstAttribute="top" secondItem="Q5r-2q-66P" secondAttribute="top" constant="11" id="klM-LL-Gjy"/>
                                     <constraint firstAttribute="trailing" secondItem="6RH-mC-vdF" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="rUu-Hw-1np"/>
                                     <constraint firstAttribute="bottom" secondItem="src-Wr-nK6" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="yDy-tD-ESz"/>
@@ -86,13 +85,13 @@
                                 <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gnC-Bv-t17">
                                     <size key="itemSize" width="45" height="60"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Card" id="OJR-rg-V4t" customClass="SetCardCollectionViewCell">
-                                        <rect key="frame" x="20" y="20" width="45" height="60"/>
+                                        <rect key="frame" x="20" y="70" width="45" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="60"/>
@@ -116,6 +115,22 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionHeader" id="Uf1-b5-QBN">
+                                    <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Playing cards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoR-Sm-hup">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="QoR-Sm-hup" firstAttribute="leading" secondItem="Uf1-b5-QBN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K2N-fM-MGz"/>
+                                        <constraint firstItem="QoR-Sm-hup" firstAttribute="top" secondItem="Uf1-b5-QBN" secondAttribute="top" constant="14" id="j0v-8A-Sc9"/>
+                                    </constraints>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="ez8-Q7-Zgj" id="tmd-40-HyV"/>
                                     <outletCollection property="gestureRecognizers" destination="Q8M-yZ-cxt" appends="YES" id="Qo1-uy-lBM"/>
@@ -167,7 +182,7 @@
                         <segue destination="wpk-j9-xLT" kind="relationship" relationship="viewControllers" id="ymw-eg-Eh2"/>
                         <segue destination="ez8-Q7-Zgj" kind="relationship" relationship="viewControllers" id="Jpp-yF-NPt"/>
                         <segue destination="CKU-t2-sRa" kind="relationship" relationship="viewControllers" id="GrT-7Y-ZSf"/>
-                        <segue destination="Zth-Ro-jmt" kind="relationship" relationship="viewControllers" id="Q8E-Sf-RLj"/>
+                        <segue destination="YBD-dk-TQy" kind="relationship" relationship="viewControllers" id="rrG-IW-iCH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXd-se-nXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,41 +221,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8Q-eg-Qel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-862" y="618"/>
-        </scene>
-        <!--Settings View Controller - Settings-->
-        <scene sceneID="m1S-m1-uaD">
-            <objects>
-                <viewController id="Zth-Ro-jmt" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Uob-vZ-14U">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJZ-GE-xCi">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                <state key="normal" title="Clear all game scores">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clearLabelClick" destination="Zth-Ro-jmt" eventType="touchUpInside" id="Eoa-bC-nTd"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.25780702059999999" green="0.62103396050000004" blue="0.2453413954" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="nJZ-GE-xCi" firstAttribute="centerX" secondItem="Uob-vZ-14U" secondAttribute="centerX" type="default" id="60H-ML-PDb"/>
-                            <constraint firstItem="nJZ-GE-xCi" firstAttribute="centerY" secondItem="Uob-vZ-14U" secondAttribute="centerY" type="default" id="Vvg-gd-Oeq"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsTabImage.png" id="jM8-qv-rZ3"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bbr-Rq-ZDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-746" y="1301"/>
         </scene>
         <!--Playing Card View Controller - Card Game-->
         <scene sceneID="Z0E-SS-OwH">
@@ -388,6 +368,75 @@
             </objects>
             <point key="canvasLocation" x="-795" y="-808"/>
         </scene>
+        <!--Settings Table View Controller - Settings-->
+        <scene sceneID="qHl-ia-Ndw">
+            <objects>
+                <tableViewController id="YBD-dk-TQy" customClass="SettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="apt-lQ-qa0">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Game Settings" id="g2M-ar-4aY">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="kIS-fK-xrG" style="IBUITableViewCellStyleDefault" id="AhF-Hv-lrh">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Clear all game scores" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kIS-fK-xrG">
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="wiC-VX-xTM" detailTextLabel="uYn-X5-WqY" style="IBUITableViewCellStyleValue1" id="raJ-Ro-XwH">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Playing cards amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wiC-VX-xTM">
+                                                    <rect key="frame" x="10" y="11" width="177" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="22" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uYn-X5-WqY">
+                                                    <rect key="frame" x="251" y="11" width="19" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="YBD-dk-TQy" id="l8I-ph-nnL"/>
+                            <outlet property="delegate" destination="YBD-dk-TQy" id="9mt-j8-zkp"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsTabImage.png" id="bb2-yF-c1h"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="countOfDealedCardsLabel" destination="uYn-X5-WqY" id="wed-4s-qdp"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="796-xX-bfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-930" y="1305"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CardGameTabImage.png" width="16" height="24"/>
@@ -399,7 +448,6 @@
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="flipCardClick:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="eventMessageView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventMessagesSlider" candidateClass="UISlider"/>
@@ -441,8 +489,11 @@
         <class className="SetCardView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardView.h"/>
         </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="countOfDealedCardsLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
@@ -452,9 +503,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

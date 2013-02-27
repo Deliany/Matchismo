@@ -58,9 +58,14 @@
 @property (readonly, nonatomic) NSUInteger countOfUnplayableCards;
 
 /**
- * Array of arrays, each of subarray contains Card objects that participated in matching
+ * An array of arrays, each of subarray contains Card objects that participated in matching
  **/
 @property (readonly, strong, nonatomic) NSMutableArray *flippedCardsHistoryArray;
+
+/**
+ * An array of already matched cards
+ **/
+@property (readonly, strong, nonatomic) NSMutableArray *matchedCardsArray;
 
 ///---------------------------------------------------------------------------------------
 /// @name Initializing a CardMatchingGame
