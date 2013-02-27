@@ -270,14 +270,14 @@ for example which cards was matched together and for how much score they matched
 			<Abstract type="html">Adds more cards to game from stored deck by specified amount</Abstract>
 			<DeclaredIn>CardGame.h</DeclaredIn>			
 			
-			<Declaration>- (void)increaseNumberOfCardsUpTo:(NSUInteger)numberOfCards</Declaration>
+			<Declaration>- (NSArray *)increaseNumberOfCardsUpTo:(NSUInteger)numberOfCards</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>numberOfCards</Name>
 					<Abstract type="html">Number of cards that will be added to game</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">index paths with section 0 of inserted cards</Abstract></ReturnValue>
 			<Anchor>//api/name/increaseNumberOfCardsUpTo:</Anchor>
 		</Token>
 		
@@ -288,8 +288,30 @@ for example which cards was matched together and for how much score they matched
 			
 			<Declaration>- (NSArray *)removeUnplayableCards</Declaration>
 			
-			<ReturnValue><Abstract type="html">index path of removed cards</Abstract></ReturnValue>
+			<ReturnValue><Abstract type="html">index paths with section 0 of removed cards</Abstract></ReturnValue>
 			<Anchor>//api/name/removeUnplayableCards</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/matchIsPossible</TokenIdentifier>
+			<Abstract type="html">Determines whether possible to match current cards or not</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)matchIsPossible</Declaration>
+			
+			<ReturnValue><Abstract type="html">True if match of cards is possible, False otherwise</Abstract></ReturnValue>
+			<Anchor>//api/name/matchIsPossible</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/CardGame/matchCardsHint</TokenIdentifier>
+			<Abstract type="html">Gives player hint, what cards can be matched at first look</Abstract>
+			<DeclaredIn>CardGame.h</DeclaredIn>			
+			
+			<Declaration>- (NSIndexSet *)matchCardsHint</Declaration>
+			
+			<ReturnValue><Abstract type="html">set of card indexes, of which could possibly create match, returns nil if can&apos;t match anything</Abstract></ReturnValue>
+			<Anchor>//api/name/matchCardsHint</Anchor>
 		</Token>
 		
 	</File>

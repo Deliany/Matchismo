@@ -127,11 +127,29 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pL1-Qa-MZ6">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="Phr-bb-dQf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <state key="normal" title="Cheat">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="cheatButtonClick" destination="kg1-8H-IG6" eventType="touchUpInside" id="rck-ki-DXX"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="BgC-bK-M6f" firstAttribute="leading" secondItem="Fud-at-bPx" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="97j-1C-KhC"/>
-                                        <constraint firstItem="BgC-bK-M6f" firstAttribute="top" secondItem="Fud-at-bPx" secondAttribute="top" constant="14" id="XfX-08-oR0"/>
+                                        <constraint firstItem="BgC-bK-M6f" firstAttribute="top" secondItem="Fud-at-bPx" secondAttribute="top" constant="14" id="HcU-wM-aLd"/>
+                                        <constraint firstItem="pL1-Qa-MZ6" firstAttribute="leading" secondItem="BgC-bK-M6f" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Y8u-bL-NMg"/>
+                                        <constraint firstItem="pL1-Qa-MZ6" firstAttribute="centerY" secondItem="Fud-at-bPx" secondAttribute="centerY" type="default" id="tiR-kR-tdz"/>
                                     </constraints>
                                 </collectionReusableView>
                                 <connections>
@@ -443,6 +461,7 @@
         <class className="CardGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="flipCardClick:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="eventMessageView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventMessagesSlider" candidateClass="UISlider"/>

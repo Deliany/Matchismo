@@ -20,5 +20,6 @@
 @property (nonatomic,strong) NSString* shading;
 @property (nonatomic,strong) NSString* color;
 @property (nonatomic, getter = isSelected) BOOL selected;
+@property (nonatomic) BOOL starred;
 
 @end

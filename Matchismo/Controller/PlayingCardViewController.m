@@ -29,7 +29,7 @@
     return [[NSUserDefaults standardUserDefaults] integerForKey:PLAYING_CARDS_AMOUNT_KEY];
 }
 
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card animate:(BOOL)animate
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card starred:(BOOL)starred animate:(BOOL)animate
 {
     if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
         PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell*) cell).playingCardView;

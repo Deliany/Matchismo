@@ -16,7 +16,7 @@
 
 - (Deck*)createDeck; // abstract
 - (NSString *)gameName; // abstract
-- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card animate:(BOOL)animate; // abstract
+- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card starred:(BOOL)starred animate:(BOOL)animate; // abstract
 - (NSArray*)updateEventMessageViewStatus:(UIView*)view withCards:(NSArray*)cards andScore:(NSInteger)score; // abstract
 
 @end

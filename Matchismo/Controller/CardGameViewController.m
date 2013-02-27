@@ -28,6 +28,7 @@
 
 @property (strong, nonatomic) CardGame *game;
 @property (strong, nonatomic) GameResult *gameResult;
+@property (strong, nonatomic) NSIndexSet *cheatIndexSet;
 
 @end
 
@@ -49,7 +50,7 @@
     return nil; // abstract
 }
 
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card animate:(BOOL)animate
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card starred:(BOOL)starred animate:(BOOL)animate
 {
     // abstract
 }
@@ -133,9 +134,13 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
     Card *card;
+    BOOL starred = NO;
     switch (indexPath.section) {
         case 0:
+        {
             card = [self.game cardAtIndex:indexPath.row];
+            starred = [self.cheatIndexSet containsIndex:indexPath.row];
+        }
             break;
             
         case 1:
@@ -144,7 +149,8 @@
             break;
     }
    
-    [self updateCell:cell usingCard:card animate:NO];
+    BOOL animated = card.lastPlayed ? YES : NO;
+    [self updateCell:cell usingCard:card starred:starred animate:animated];
     return cell;
 }
 
@@ -163,7 +169,6 @@
     return view;
 }
 
-
 #pragma mark -
 #pragma UI interaction methods
 
@@ -179,7 +184,7 @@
         if (self.game.countOfUnplayableCards > 0 && [self isKindOfClass:[SetCardGameViewController class]])
         {
             [self.game removeUnplayableCards];
-            [self.cardCollectionView reloadData];
+            self.cheatIndexSet = nil;
             
         }
         [self updateUI];
@@ -194,18 +199,11 @@
     
     NSArray *viewsArray = [self updateEventMessageViewStatus:self.eventMessageView withCards:[self.game.flippedCardsHistoryArray lastObject] andScore:self.game.lastMatchScore];
     
-    [self.eventMessages addObject:viewsArray];//self.game.lastEventMessage];
+    [self.eventMessages addObject:viewsArray];
     
     self.eventMessagesSlider.maximumValue = [self.eventMessages count];
     self.eventMessagesSlider.value = self.eventMessagesSlider.maximumValue;
-    
-    for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells])
-    {
-        NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
-        Card *card = [self.game cardAtIndex:indexPath.item];
-        BOOL animated = card.lastPlayed ? YES : NO;
-        [self updateCell:cell usingCard:card animate:animated];
-    }
+    [self.cardCollectionView reloadData];
 }
 
 - (IBAction)eventMessagesHistorySlide
@@ -232,7 +230,7 @@
 {
     if ([self.game countOfCardsInDeck] > 0) {
         [self.game increaseNumberOfCardsUpTo:3];
-        [self.cardCollectionView reloadData];
+        [self updateUI];
         
         NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:self.game.countOfCardsInGame - 1 inSection:0];
         [self.cardCollectionView scrollToItemAtIndexPath:scrollIndexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
@@ -284,8 +282,15 @@
     self.gameTypeSegmentControl.enabled = true;
     
     [self.eventMessages removeAllObjects];
-    [self.cardCollectionView reloadData];
     [self updateUI];
+}
+
+- (IBAction)cheatButtonClick
+{
+    if (!self.cheatIndexSet) {
+        self.cheatIndexSet = [self.game matchCardsHint];
+        [self updateUI];
+    }
 }
 
 @end

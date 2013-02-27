@@ -103,13 +103,26 @@
 /**
  * Adds more cards to game from stored deck by specified amount
  * @param numberOfCards Number of cards that will be added to game
+ * @return index paths with section 0 of inserted cards
  **/
-- (void) increaseNumberOfCardsUpTo: (NSUInteger)numberOfCards;
+- (NSArray*) increaseNumberOfCardsUpTo: (NSUInteger)numberOfCards;
 
 /**
  * Remove all cards that is unplayable from game
- * @return index path of removed cards
+ * @return index paths with section 0 of removed cards
  **/
 - (NSArray*) removeUnplayableCards;
+
+/**
+ * Determines whether possible to match current cards or not
+ * @return True if match of cards is possible, False otherwise
+ **/
+- (BOOL)matchIsPossible;
+
+/**
+ * Gives player hint, what cards can be matched at first look
+ * @return set of card indexes, of which could possibly create match, returns nil if can't match anything
+ **/
+- (NSIndexSet*)matchCardsHint;
 
 @end

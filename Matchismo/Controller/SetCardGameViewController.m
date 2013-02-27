@@ -39,7 +39,7 @@
     return @"Set Card Game";
 }
 
--(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card animate:(BOOL)animate
+-(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card*)card starred:(BOOL)starred  animate:(BOOL)animate
 {
     if ([cell isKindOfClass:[SetCardCollectionViewCell class]]) {
         SetCardView *setCardView = ((SetCardCollectionViewCell*) cell).setCardView;
@@ -51,6 +51,7 @@
             setCardView.color = setCard.color;
             setCardView.selected = setCard.faceUp;
             setCardView.alpha = setCard.playable ? 1.0 : 0.3;
+            setCardView.starred = starred;
         }
     }
 }

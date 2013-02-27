@@ -7,8 +7,8 @@
 //
 
 #import "CardGame.h"
-#import "PlayingCardDeck.h"
-#import "PlayingCard.h"
+#import "Deck.h"
+#import "Card.h"
 
 @interface CardGame ()
 
@@ -236,14 +236,66 @@
     return arrayOfIndexPathsOfDeletedCards;
 }
 
-- (void)increaseNumberOfCardsUpTo:(NSUInteger)numberOfCards
+#define PENALTY_FOR_INATTENTION 10
+
+- (NSArray*)increaseNumberOfCardsUpTo:(NSUInteger)numberOfCards
 {
+    if ([self matchIsPossible])
+    {
+        self.score -= PENALTY_FOR_INATTENTION;
+    }
+    
+    NSMutableArray *arrayOfIndexPathsOfInsertedCards = [NSMutableArray array];
+    
     for (int i = 0; i < numberOfCards; ++i) {
         Card *drawnCard = [self.deck drawRandomCard];
         if (drawnCard) {
             [self.cards addObject:drawnCard];
+            [arrayOfIndexPathsOfInsertedCards addObject:[NSIndexPath indexPathForItem:[self.cards indexOfObject:drawnCard] inSection:0]];
         }
     }
+    
+    return arrayOfIndexPathsOfInsertedCards;
+}
+
+- (BOOL)matchIsPossible
+{
+    for (int i = 0; i < [self.cards count]; ++i) {
+        for (int j = i+1; j < [self.cards count]; ++j) {
+            for (int k = j+1; k < [self.cards count]; ++k) {
+                Card *card = self.cards[i];
+                NSInteger score = [card match:@[self.cards[j],self.cards[k]]];
+                if (score) {
+                    return YES;
+                }
+            }
+        }
+    }
+    return NO;
+}
+
+#define CHEAT_PENALTY 10
+
+- (NSIndexSet *)matchCardsHint
+{
+    for (int i = 0; i < [self.cards count]; ++i) {
+        for (int j = i+1; j < [self.cards count]; ++j) {
+            for (int k = j+1; k < [self.cards count]; ++k) {
+                Card *card = self.cards[i];
+                NSInteger score = [card match:@[self.cards[j],self.cards[k]]];
+                if (score) {
+                    self.score -= CHEAT_PENALTY;
+                    
+                    NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+                    [indexSet addIndex:i];
+                    [indexSet addIndex:j];
+                    [indexSet addIndex:k];
+                    return indexSet;
+                }
+            }
+        }
+    }
+    return nil;
 }
 
 @end

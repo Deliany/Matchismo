@@ -73,6 +73,10 @@
 	
 	<option value="//api/name/initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:</option>
 	
+	<option value="//api/name/matchCardsHint">&nbsp;&nbsp;&nbsp;&nbsp;- matchCardsHint</option>
+	
+	<option value="//api/name/matchIsPossible">&nbsp;&nbsp;&nbsp;&nbsp;- matchIsPossible</option>
+	
 	<option value="//api/name/removeUnplayableCards">&nbsp;&nbsp;&nbsp;&nbsp;- removeUnplayableCards</option>
 	
 	
@@ -138,6 +142,10 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/increaseNumberOfCardsUpTo:">increaseNumberOfCardsUpTo:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:">initWithNumberOfCards:fromCardDeck:andNumberOfCardsToMatch:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/matchCardsHint">matchCardsHint</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/matchIsPossible">matchIsPossible</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeUnplayableCards">removeUnplayableCards</a></span></li>
 	
@@ -306,6 +314,20 @@ for example which cards was matched together and for how much score they matched
 	<span class="tooltip">
 		<code><a href="#//api/name/removeUnplayableCards">&ndash;&nbsp;removeUnplayableCards</a></code>
 		<span class="tooltip"><p>Remove all cards that is unplayable from game</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/matchIsPossible">&ndash;&nbsp;matchIsPossible</a></code>
+		<span class="tooltip"><p>Determines whether possible to match current cards or not</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/matchCardsHint">&ndash;&nbsp;matchCardsHint</a></code>
+		<span class="tooltip"><p>Gives player hint, what cards can be matched at first look</p></span>
 	</span>
 	
 	
@@ -766,7 +788,7 @@ for example which cards was matched together and for how much score they matched
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)increaseNumberOfCardsUpTo:(NSUInteger)<em>numberOfCards</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (NSArray *)increaseNumberOfCardsUpTo:(NSUInteger)<em>numberOfCards</em></code></div>
 
     
 	
@@ -781,6 +803,11 @@ for example which cards was matched together and for how much score they matched
 	</div>
 	
 	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>index paths with section 0 of inserted cards</p>
+	</div>
 	
 	
 	
@@ -862,6 +889,88 @@ for example which cards was matched together and for how much score they matched
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/matchCardsHint" title="matchCardsHint"></a>
+	<h3 class="subsubtitle method-title">matchCardsHint</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gives player hint, what cards can be matched at first look</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSIndexSet *)matchCardsHint</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>set of card indexes, of which could possibly create match, returns nil if can&rsquo;t match anything</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/matchIsPossible" title="matchIsPossible"></a>
+	<h3 class="subsubtitle method-title">matchIsPossible</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Determines whether possible to match current cards or not</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)matchIsPossible</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>True if match of cards is possible, False otherwise</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">CardGame.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/removeUnplayableCards" title="removeUnplayableCards"></a>
 	<h3 class="subsubtitle method-title">removeUnplayableCards</h3>
 	
@@ -881,7 +990,7 @@ for example which cards was matched together and for how much score they matched
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>index path of removed cards</p>
+		<p>index paths with section 0 of removed cards</p>
 	</div>
 	
 	

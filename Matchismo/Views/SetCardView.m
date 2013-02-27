@@ -34,9 +34,15 @@
     [self setNeedsDisplay];
 }
 
-- (void)selected:(BOOL)selected
+- (void)setSelected:(BOOL)selected
 {
     _selected = selected;
+    [self setNeedsDisplay];
+}
+
+- (void)setStarred:(BOOL)starred
+{
+    _starred = starred;
     [self setNeedsDisplay];
 }
 
@@ -59,6 +65,9 @@
     [roundedRect stroke];
     
     [self drawCards];
+    if (self.starred) {
+        [self drawStar];
+    }
 }
 
 #define SYMBOL_SCALE_X 2
@@ -166,6 +175,31 @@
         [path stroke];
         [path fill];
     }
+}
+
+- (void)drawStar
+{
+    CGPoint start = CGPointMake(self.bounds.size.width*0.75, self.bounds.size.width*0.1);
+    
+    //// Star Drawing
+    UIBezierPath* starPath = [UIBezierPath bezierPath];
+    [starPath moveToPoint: CGPointMake(start.x+5, start.y-0)];
+    [starPath addLineToPoint: CGPointMake(start.x+3.25, start.y+2.59)];
+    [starPath addLineToPoint: CGPointMake(start.x+0.24, start.y+3.45)];
+    [starPath addLineToPoint: CGPointMake(start.x+2.17, start.y+5.92)];
+    [starPath addLineToPoint: CGPointMake(start.x+2.06, start.y+9.05)];
+    [starPath addLineToPoint: CGPointMake(start.x+5, start.y+7.97)];
+    [starPath addLineToPoint: CGPointMake(start.x+7.94, start.y+9.05)];
+    [starPath addLineToPoint: CGPointMake(start.x+7.83, start.y+5.92)];
+    [starPath addLineToPoint: CGPointMake(start.x+9.76, start.y+3.45)];
+    [starPath addLineToPoint: CGPointMake(start.x+6.75, start.y+2.59)];
+    [starPath closePath];
+    [[UIColor yellowColor] setFill];
+    [starPath fill];
+    [[UIColor blackColor] setStroke];
+    starPath.lineWidth = 0.5;
+    [starPath stroke];
+
 }
 
 @end
